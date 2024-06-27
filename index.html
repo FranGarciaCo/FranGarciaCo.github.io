@@ -6,6 +6,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mate">
+    <link rel="stylesheet" href="webpagestyle.css">
     <script>
       MathJax = {
         tex: {
@@ -16,27 +17,9 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
-    <style>
-      body {
-        font-family: 'Mate', serif;
-        font-size: 17px;
-      }
-      summary {
-        display: inline;
-      }
-      details[open] summary {
-        display: inline;
-      }
-      details summary::-webkit-details-marker {
-        display: none;
-      }
-      ul.n {
-        list-style-type:none;
-      }
-    </style>
   </head>
   <body>
-    <div style="background-color: #ececec; padding: 10px;">
+    <div style="background-color: #ececec; padding: 10px;" class="external-link">
       <h2>
         <u>Fra</u>ncisco <u>Gar</u>cía <u>Cor</u>tés
       </h2>
@@ -44,7 +27,7 @@
         My email is: (underlined parts of my name, in lowercase)3 at alum.us.es
         <span style="float:right;">
           <!--<a href="https://github.com/FranGarciaCo" target="_blank" rel="noreferrer noopener">CV</a>,-->
-          <a href="https://github.com/FranGarciaCo" target="_blank" rel="noreferrer noopener">GitHub</a>
+          <a class="external-link" href="https://github.com/FranGarciaCo" target="_blank" rel="noreferrer noopener">GitHub</a>
         </span>
       </p>
     </div>
@@ -53,7 +36,7 @@
       About me
     </h3>
     <p>
-      I am a researcher in Mathematics at <i>Dpto. de Álgebra</i> of <i>Universidad de Sevilla</i> under the supervision of Francisco Castro Jiménez and soon a Ph.D. student advised by <a href="https://personal.us.es/arojas/" target="_blank" rel="noreferrer noopener">Antonio Rojas León</a>. I earn a Bachelor degree in Mathematics (graduated with Honors), a M.Sc. degree in Mathematics (graduated with Honors) and a M.Ed. degree on Teaching Mathematics, all of them from Universidad de Sevilla.
+      I am a researcher in Mathematics at <i>Dpto. de Álgebra</i> of <i>Universidad de Sevilla</i> under the supervision of Francisco Castro Jiménez and soon a Ph.D. student advised by <span class="external-link"><a href="https://personal.us.es/arojas/" target="_blank" rel="noreferrer noopener">Antonio Rojas León</a></span>. I earn a Bachelor degree in Mathematics (graduated with Honors), a M.Sc. degree in Mathematics (graduated with Honors) and a M.Ed. degree on Teaching Mathematics, all of them from Universidad de Sevilla.
     </p>
     <h3>
       Research interests
@@ -65,10 +48,10 @@
     <h3>
       Preprints / Publications
     </h3>
-    <ol reversed>
+    <ol reversed class="external-link">
       <li>(w/ <a href="https://personal.us.es/arojas/" target="_blank" rel="noreferrer noopener">Antonio Rojas-León</a>) <i>Finite monodromy of some two-parameter families of exponential sums.</i> <a href="https://arxiv.org/abs/2406.10385" target="_blank" rel="noreferrer noopener">arXiv:2406.10385</a>
       <details name="pubs">
-        <summary style="cursor: pointer"><strong>Abstract.</strong></summary>
+        <summary><strong>Abstract.</strong></summary>
         We determine the set of polynomials $f(x)\in k[x]$, where $k$ is a finite field, such that the local system on $\mathbb{G}^2_m$ which parametrizes the family of exponential sums $(s,t)\mapsto \sum_{x\in k}\psi(sf(x)+tx)$ has finite monodromy, in two cases: when $f(x)=x^d+\lambda x^e$ is a binomial and when $f(x)=(x−\alpha)^d(x−\beta)^e$ is of Belyi type.
         </details>
       </li>
@@ -76,11 +59,11 @@
     <h3>
       Some talks
     </h3>
-    <ul>
+    <ul class="external-link">
       <li>
         December, 2023. <i>Deciding non-finiteness of monodromy: A sieve-based approach.</i> <a href="https://sites.google.com/princeton.edu/katz80" target="_blank" rel="noreferrer noopener">Monodromy and Its Applications</a>.
         <details name="talks">
-          <summary style="cursor: pointer">
+          <summary>
             <em>Description</em>.
           </summary>
           Lightning talk at the conference on the occassion of Nicholas Katz' 80th birthday.
@@ -92,7 +75,7 @@
       <li>
         March, 2024. <i>Convolución en tres escenarios (Convolution on three scenarios).</i> <a href="http://www.algebra.us.es/semalg/2024-03-12-sesion-rapida-predoctoral-i/" target="_blank" rel="noreferrer noopener">Seminario del Dpto. de Álgebra de la Universidad de Sevilla</a>.
         <details name="talks">
-          <summary style="cursor: pointer">
+          <summary>
             <em>Description</em>.
           </summary>
           Brief talk at Seminar of Algebra to explain my Ph.D. problem.
@@ -103,32 +86,32 @@
     <h3>
       Other writings
     </h3>
-    <ul>
+    <ul class="external-link">
       <li>
         <i>Teoría de cuerpos de clase (Class field theory).</i> Trabajo de Fin de Grado (Bachelor's thesis).
         <details name="other">
-          <summary style="cursor: pointer"><em>Description</em>.</summary>
-          Honored thesis supervised by Antonio Rojas León, made available by Universidad de Sevilla at <a href="https://idus.us.es/handle/11441/134510" target="_blank" rel="noreferrer noopener">Teoría de cuerpos de clase</a>.
+          <summary><em>Description</em>.</summary>
+          Honors thesis supervised by Antonio Rojas León, made available by Universidad de Sevilla at <a href="https://idus.us.es/handle/11441/134510" target="_blank" rel="noreferrer noopener">Teoría de cuerpos de clase</a> (in Spanish).
         </details>
       </li>
       <li>
         <i>Monodromy of local systems and applications to coding theory.</i> Trabajo de Fin de Máster (Master's thesis).
         <details name="other">
-          <summary style="cursor: pointer"><em>Description</em>.</summary>
-          Honored thesis supervised by Antonio Rojas León, made available by Universidad de Sevilla at <a href="https://idus.us.es/handle/11441/155731" target="_blank" rel="noreferrer noopener">Monodromy of local systems and applications to coding theory</a>.
+          <summary><em>Description</em>.</summary>
+          Honors thesis supervised by Antonio Rojas León, made available by Universidad de Sevilla at <a href="https://idus.us.es/handle/11441/155731" target="_blank" rel="noreferrer noopener">Monodromy of local systems and applications to coding theory</a> (in English)
         </details>
       </li>
       <!--<li>
         July, 2024. (w/ Elena Camacho-Aguilar and Francisco Castro-Jiménez) <i>Algebraic methods in cell differentiation.</i>
         <details name="talks">
-          <summary style="cursor: pointer"><em>Description.</em></summary>
+          <summary><em>Description.</em></summary>
           Presented at the <a href="https://www.ecm2024sevilla.com">9th European Congress of Mathematics</a> by the second author.
         </details>
       </li>-->
       <!--<li>
         September, 2024. (w/ Antonio Rojas-León) <i>???</i>
         <details name="talks">
-          <summary style="cursor: pointer"><em>Description.</em></summary>
+          <summary><em>Description.</em></summary>
           ???
         </details>
       </li>-->
@@ -136,7 +119,7 @@
     <h3>
       Conferences
     </h3>
-    <ul class="n">
+    <ul class="n external-link">
       <li>
         <b>Future</b>
         <ol>

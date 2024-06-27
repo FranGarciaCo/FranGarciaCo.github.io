@@ -6,6 +6,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mate">
+    <link rel="stylesheet" href="webpagestyle.css">
     <script>
       MathJax = {
         tex: {
@@ -16,32 +17,9 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
-    <style>
-      body {
-        font-family: 'Mate', serif;
-        font-size: 17px;
-      }
-      summary {
-        display: inline;
-      }
-      details[open] summary {
-        display: inline;
-      }
-      ul.n {
-        list-style-type:none;
-      }
-      .box {
-        float: right;
-        height: 12px;
-        width: 12px;
-        border: 1px solid black;
-        clear: both;
-        background-color: black;
-      }
-    </style>
   </head>
   <body>
-    <div style="background-color: #ececec; padding: 10px;">
+    <div style="background-color: #ececec; padding: 10px;" class="external-link">
       <p style="float:right;">
         <a href="index.html">Back to main page</a>
       </p>
@@ -176,9 +154,9 @@
         </li>
       </ol>
     </p>
-    <details>
-      <summary style="cursor: pointer"><b>Proof.</b></summary>
-        This is Theorem 5 in <a href="https://arxiv.org/abs/2406.10385" target="_blank" rel="noreferrer noopener">the paper</a>.<div class="box"></div>
+    <details class="external-link" style="line-height: 15px">
+      <summary><b>Proof.</b></summary>
+        This is Theorem 5 in <a href="https://arxiv.org/abs/2406.10385" target="_blank" rel="noreferrer noopener">the paper</a>.<div class="qedsymbol"></div>
     </details>
   </body>
 </html>
