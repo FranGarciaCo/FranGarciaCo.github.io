@@ -34,7 +34,7 @@ ul.n {
 a[target="_blank"]::after {
   background-color: currentColor;
   background-size: contain;
-  content: "";
+  content: '';
   display: inline-block;
   width: .6em;
   height: .6em;
@@ -52,7 +52,7 @@ a[target="_blank"]::after {
   background-color: black;
   background-size: contain;
   vertical-align: text-bottom;
-  content: "";
+  content: '';
   display: inline-block;
   width: 1em;
   height: 1em;
