@@ -1,6 +1,6 @@
 body {
-  margin-right: 25px;
-  margin-left: 25px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 body {
@@ -13,14 +13,20 @@ summary {
   cursor: pointer;
 }
 
-details[open] summary {
-  display: inline;
-  cursor: pointer;
+details > summary {
+  list-style-type: none;
 }
 
-details summary::-webkit-details-marker {
+details > summary::-webkit-details-marker {
   display: none;
-  cursor: pointer;
+}
+
+details > summary::before {
+  content: '⭔ ';
+}
+
+details[open] > summary::before {
+  content: '⭓ ';
 }
 
 ul.n {
