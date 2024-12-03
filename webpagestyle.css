@@ -1,6 +1,13 @@
 body {
-  margin-right: 50px;
-  margin-left: 50px;
+      margin-right: 50px;
+      margin-left: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 }
 
 body {
