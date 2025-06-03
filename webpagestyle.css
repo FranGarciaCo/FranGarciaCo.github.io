@@ -29,6 +29,7 @@ body {
 }
 
 .stdDetails > summary {
+  display: inline;
   cursor: pointer;
 }
 
