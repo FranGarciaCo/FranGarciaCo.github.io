@@ -29,17 +29,16 @@ body {
 }
 
 .stdDetails > summary {
-  display: inline;
   cursor: pointer;
 }
 
-.stdDetails > summary {
+/*.stdDetails > summary {
   list-style-type: none;
-}
+}*/
 
-.stdDetails > summary::-webkit-details-marker {
+/*.stdDetails > summary::-webkit-details-marker {
   display: none;
-}
+}*/
 
 .left {
   clear: left;
