@@ -29,7 +29,7 @@ body {
 }
 
 .stdDetails > summary {
-  display: inline;
+  display: block;
   cursor: pointer;
 }
 
@@ -47,6 +47,10 @@ body {
 
 ul.n {
   list-style-type:none;
+}
+
+ul li, ol li {
+     margin-top:10px;
 }
 
 .qedsymbol {

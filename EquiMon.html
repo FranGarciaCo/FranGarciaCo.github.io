@@ -54,6 +54,14 @@
 
     <p>Supporting material for the talk at <i>VII Congreso de Jóvenes Investigadores de la RSME 2025</i>. This work was partially supported by grants PID2020-117843GB-I00 and PID2020-114613GB-I00 funded by MCU/AEI/10.13039/501100011033.</p>
 
+    <hr>
+
+    <p>Let $p$ be a prime number, $d$ a prime to $p$ odd positive integer and $r$ a positive integer. For every $t\in\mathbb{F}_{p^r}$ consider the exponential sum \[S_{p^r,d}(t):= \frac{-1}{{p}^{r/2}}\sum_{x\in\mathbb{F}_{p^r}}\mathsf{exp}\big(2\pi i \mathsf{Trace}_{\mathbb{F}_{p^r}/\mathbb{F}_p}(x^d+tx)/p\big).\] Observe that, since $d$ is odd, these exponential sums are real integers and, after Deligne's proof of the Weil Conjectures, we also know they have absolute value less than $1$.</p>
+
+    <p>Below you will find the histogram of the set $\{S_{p^r,d}(t)\ \vert\ t\in\mathbb{F}_{p^r}\}$ for different values of the parameters $p,d,r$; computed using <em>SageMath</em> and <em>Julia Programming Language</em>.</p>
+
+    <p>The shape of the histogram is determined by the geometric monodromy group of the corresponding $\ell$-adic local system on $\mathbb{A}^1/\mathbb{F}_p$. These pictures suggest that the monodromy group $G_{\mathsf{geom}}$ may be finite in some cases (for $(p,d)\in \{(2,3),(2,5),(3,5),(5,3)\}$), and in other cases we obtain the pushforward by the trace of the Haar measure of a compact maximal subgroup of $\mathsf{Sp}_{d-1}(\mathbb{C})$ (for $p=7$ and $d=3,5$), i.e. $G_{\mathsf{geom}}=\mathsf{Sp}_{d-1}(\mathbb{C})$.</p>
+
     <p style="border: 2px solid black; padding: 5px; margin: 10px; text-align: center;">$p=2$; $d=3$</p>    
     <div class="rowContainer" style="width:100%;">
       <div class="entry">
@@ -1949,6 +1957,22 @@
         <p style="border: 1px solid black; padding: 5px; margin: 20px;">$r=7$</p>
       </div>
     </div>
+
+  <h4>References</h4>
+  <ol>
+    <li><small><b>Katz, Nicholas M.; Tiep, Pham Huu</b>. Exponential sums, hypergeometric sheaves, and monodromy groups. Annals of Mathematics Studies, 220. <i>Princeton University Press, Princeton, NJ</i>, 2025. ix+584 pp. <a href="http://www.ams.org/mathscinet-getitem?mr=4901926" target="_blank" rel="noreferrer noopener">MR4901926</a>. <a href="https://zbmath.org/7982378" target="_blank" rel="noreferrer noopener">Zbl 7982378</a>. <a href="https://web.math.princeton.edu/~nmk/kt18final.pdf" target="_blank" rel="noreferrer noopener">Available at first author's website</a>.</small>
+    </li>
+    <li><small><b>Katz, Nicholas M.</b> Rigid local systems on $\mathbb{A}^1$ with finite monodromy. With an appendix by Pham Huu Tiep. <i>Mathematika</i> <b>64</b> (2018), no. 3, 785--846. <a href="http://www.ams.org/mathscinet-getitem?mr=3867322" target="_blank" rel="noreferrer noopener">MR3867322</a>. <a href="https://zbmath.org/1456.11232" target="_blank" rel="noreferrer noopener">Zbl 1456.11232</a>. <a href="https://doi.org/10.1112/S0025579318000268" target="_blank" rel="noreferrer noopener">doi.org/10.1112/S0025579318000268</a>.</small>
+    </li>
+    <li><small><b>Katz, Nicholas M.; Sarnak, Peter</b>. Random matrices, Frobenius eigenvalues, and monodromy. American Mathematical Society Colloquium Publications, 45. <i>American Mathematical Society, Providence, RI</i>, 1999. xii+419 pp. <a href="http://www.ams.org/mathscinet-getitem?mr=1659828" target="_blank" rel="noreferrer noopener">MR1659828</a>. <a href="https://zbmath.org/0958.11004" target="_blank" rel="noreferrer noopener">Zbl 0958.11004</a>. <a href="https://web.math.princeton.edu/~nmk/RMFEM.pdf" target="_blank" rel="noreferrer noopener">Available at first author's website</a>.</small>
+    </li>
+    <li><small><b>Lachaud, Gilles</b>. On the distribution of the trace in the unitary symplectic group and the distribution of Frobenius. <i>Frobenius distributions: Lang-Trotter and Sato-Tate conjectures</i>, 185--221, Contemp. Math., 663, <i>American Mathemathical Society, Providence, RI</i>, 2016. <a href="http://www.ams.org/mathscinet-getitem?mr=3502944" target="_blank" rel="noreferrer noopener">MR3502944</a>. <a href="https://zbmath.org/1417.11123" target="_blank" rel="noreferrer noopener">Zbl 1417.11123</a>. <a href="https://doi.org/10.1090/conm/663/13355" target="_blank" rel="noreferrer noopener">doi.org/10.1090/conm/663/13355</a>.</small>
+    </li>
+    <li><small><b>Rojas-León, Antonio</b>. Finite monodromy of some families of exponential sums. <i>J. Number Theory</i> 197 (2019), 37--48. <a href="http://www.ams.org/mathscinet-getitem?mr=3906488" target="_blank" rel="noreferrer noopener">MR3906488</a>. <a href="https://zbmath.org/1412.11087" target="_blank" rel="noreferrer noopener">Zbl 1412.11087</a>. <a href="https://doi.org/10.1016/j.jnt.2018.06.012" target="_blank" rel="noreferrer noopener">doi.org/10.1016/j.jnt.2018.06.012</a>.</small>
+    </li>
+    <li><small><b>Sutherland, Andrew V.</b> Sato&mdash;Tate distributions in genus 1 to 3. <i>Author's web page:</i> <a href="https://math.mit.edu/~drew/g1SatoTateDistributions.html" target="_blank" rel="noreferrer noopener">Genus 1</a>, <a href="https://math.mit.edu/~drew/st2/g2SatoTateDistributions.html" target="_blank" rel="noreferrer noopener">Genus 2</a> and <a href="https://math.mit.edu/~drew/st3/g3SatoTateDistributions.html" target="_blank" rel="noreferrer noopener">Genus 3</a>.</small>
+    </li>
+  </ol>
 
   </body>
 </html>
