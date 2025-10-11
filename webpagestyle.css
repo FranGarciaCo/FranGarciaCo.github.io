@@ -190,13 +190,13 @@ pre code {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .dimEntry {
-  justify-content: center;
+  justify-content: left;
   display: inline-block;
   margin: 10px;
 }
