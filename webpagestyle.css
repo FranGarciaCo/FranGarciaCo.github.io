@@ -58,7 +58,7 @@ ul li, ol li {
   height: 12px;
   width: 12px;
   border: 1px solid black;
-  clear: both
+  clear: both;
   background-color: white;
 }
 
@@ -141,9 +141,9 @@ a[target="_blank"]::after {
 
 .file-marker > div {
     padding: 0 3px;
-    margin-top: -0.8em;
-    
+    margin-top: -0.8em;   
 }
+
 .box-title {
     background: white none repeat scroll 0 0;
     display: inline-block;
@@ -162,4 +162,41 @@ a[target="_blank"]::after {
   text-align: center;
   display: inline-block;
   margin: 0px;
+}
+
+code, pre {
+  margin-right: 15px;
+  margin-left: 15px;
+  /*margin-bottom: 15px;*/
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;
+  font-size: 13px;
+  color: #222;
+}
+
+code {
+  padding: 0 2px;
+  border: 1px solid #979797;
+}
+
+pre {
+  overflow: auto;
+}
+
+pre code {
+  padding: 0;
+}
+
+.dimContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.dimEntry {
+  justify-content: center;
+  display: inline-block;
+  margin: 10px;
 }

@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+     Francisco Garcia Cortes | Some remarks
+    </title>
+    <meta name="description" content="Some computational remarks on SL2-character varieties of 2-generated groups and failure of weak integrality">
+    <link rel="canonical" href="https://comp_aspects.html">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mate">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="webpagestyle.css">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="García-Cortes" />
+    <link rel="manifest" href="/assets/img/favicons/site.webmanifest" />
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      MathJax.Hub.Config({
+        tex2jax: {
+          packages: {'[+]': ['ams']},
+          inlineMath: [['$','$']],
+          processEscapes: true
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      });
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/googlecode.min.css"><!--ascetic, foundation,school-book-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad({
+        singleLine: true
+      });
+    </script>
+    <!--<script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']],
+          packages: {'[+]': ['ams']}
+        },
+        svg: {
+          fontCache: 'global'
+        }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-svg.js">
+    </script>-->
+    <style>
+      td.hljs-ln-numbers {
+	      text-align: center;
+	      color: #979797;
+	      border-right: 1px solid #979797;
+	      vertical-align: top;
+	      padding-right: 5px;
+
+	      -webkit-touch-callout: none;
+	      -webkit-user-select: none;
+	      -khtml-user-select: none;
+	      -moz-user-select: none;
+	      -ms-user-select: none;
+	      user-select: none;
+      }
+      td.hljs-ln-code {
+	      padding-left: 10px;
+      }
+      
+      code {
+	      /*white-space: pre-wrap;*/
+	      overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="border: 1px solid black; padding: 10px;">
+      <p style="float:right;">
+        <a href="index.html">Back to main page</a>
+      </p>
+      <h2>
+        <u>Fra</u>ncisco <u>Gar</u>cía <u>Cor</u>tés
+      </h2>
+      <p style="text-align: left;">
+        My email is: (underlined parts of my name)3 at alum.us.es
+      </p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: right; justify-content: flex-end; margin-top: 5pt; margin-bottom: 0pt;">
+      <div class="entry" style="margin: 0pt 2.5pt;">
+        <span class="gscholar">
+          <a href="https://scholar.google.es/citations?user=K7nTI8gAAAAJ&hl=es&oi=ao" target="_blank" rel="noreferrer noopener">
+            Google Scholar
+          </a>
+        </span>
+      </div>
+      <div class="entry" style="margin: 0pt 2.5pt;">
+        <span class="orcid">
+          <a href="https://orcid.org/0000-0002-9628-7573" target="_blank" rel="noreferrer noopener">
+            ORCid
+          </a>
+        </span>
+      </div>
+      <div class="entry" style="margin: 0pt 2.5pt;">
+        <span class="github">
+          <a href="https://github.com/FranGarciaCo" target="_blank" rel="noreferrer noopener">
+            GitHub
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <!--Title-->
+    <h3 style="text-align: center">
+      Some computational remarks on <br>"SL<sub>2</sub>-character varieties of 2-generated groups and failure of weak integrality"</br>
+    </h3>
+    <!--Abstract-->
+    <div style="text-align: justify">
+      <p>
+        <strong>Abstract.</strong>
+        In a joint paper with <a href="https://web.stanford.edu/~bvchurch/" target="_blank" rel="noreferrer noopener">Benjamin Church</a>, a family of 2-generated groups is presented and proved to not be weakly integral. In this informal note I want to explain the strong computational counterpart of this project, and aims to complement the paper. Below you will find <em>SageMath</em> code to reproduce all the computations of the paper and more.
+      </p>
+      <p>
+        Each section/subsection is collapsible, click on it if you want to read. Please, do not hesitate to contact me with any corrections, questions and/or remarks.
+      </p>
+    </div>
+
+    <h3 style="text-align: center">
+      Table of contents
+    </h3>
+
+    <!--Section 1-->
+    <details class="ToCDetails">  
+      <summary class="ToCDetails">
+        <div style="text-align: center; margin-top: 5px; margin-bottom: 5px">
+          1. Introduction
+        </div>
+      </summary>
+      <div style="text-align: justify; text-indent: 5px">
+          <span>
+            To give some context to the article, I want to review the general problem from which the question came and the progress of some mathematicians on it.
+          </span>
+      </div>
+      <!--Subsection 1.1-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            1.1. The topology of complex algebraic varieties
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            Let $X/\mathbb{C}$ be a complex algebraic variety, which we further assume to be connected, smooth and <em>quasi</em>-projective.
+          </span>
+        
+          <p>
+            Let $X^{\tt an}$ be the set $X(\mathbb{C})$ of the complex points of $X$ equipped with the analytic topology (see [] for a thorough treatment of the analytification functor). The topological space $X^{\tt an}$ is a connected topological space with the homotopy type of a connected finite CW-complex.
+          </p>
+
+          <p>
+            In particular, the (topological) fundamental group $\pi_1(X^{\tt an},x_0)$ (where $x_0 \in X(\mathbb{C})$ is an arbitrary point) is a finitely presented group.
+          </p>
+
+          <p>
+            Certainly, any finitely presented group $\pi$ can be realized as the fundamental group of a connected finite CW-complex. Indeed, just consider the CW-complex with just one 0-dim'l cell, one 1-dim'l cell for each generator and a 2-dim'l cell for each relation, gluing it to the 1-dim'l cells by reading the word.
+          </p>
+
+          <p>
+            Hence, can we conclude that every finitely presented group can be realized as the (topological) fundamental group of some $X^{\tt an}$?
+          </p>
+
+          <p>
+            The answer is <strong>NO</strong> because we don't know if the CW-complexes used to realize finitely presented groups as fundamental groups have the homotopy type of $X^{\tt an}$ for some $X$. The paper and this note is all about this: to find finitely presented groups that are not the fundamental group of any $X^{\tt an}$.
+          </p>
+
+          <p>
+            Let me name the groups that are not fundamental in the previous sense:
+          </p>
+
+          <p>
+            <aside id="info-block">
+              <section class="file-marker">
+                <div style="text-align: justify">
+                  <div class="box-title">
+                    <strong>Definition 1.</strong>
+                  </div>
+                  <div class="box-contents" style="padding: 10px;">
+                    A finitely presented group $\pi$ is said to be of <em>geometric origin</em> if $\pi\simeq\pi_1(X^{\tt an},x_0)$ for some connected smooth quasi-projective complex algebraic variety $X$.
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </p>
+
+          <p>It is classical that every free group on finitely many symbols $F_n$ is of geometric origin, since $F_n\simeq\pi_1(\mathbb{P}^1(\mathbb{C})-\{n+1\text{ points}\},x_0)$. We would like to answer the very general question:
+
+          </p>
+
+          <p style="text-align: center">
+            <em>
+              Can we decide if a finitely presented group is of geometric origin?
+            </em>
+          </p>
+
+          <span>
+            This question has been studied, among others, by de Jong and Esnault in [<a href="#dJE24">dJE24</a>] and they found a neccessary condition for a finitely presented group to be of geometric origin. We recall it below.
+          </span>
+        </div>
+      </details>
+      <!--Subsection 1.2-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top: 2.5px; margin-bottom: 2.5px">
+            1.2. de Jong and Esnault's weak integrality property
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            Start with the
+          </span>
+
+          <p>
+            <aside id="info-block">
+              <section class="file-marker">
+                <div style="text-align: justify">
+                  <div class="box-title">
+                    <strong>Definition 2. (de Jong&mdash;Esnault)</strong>
+                  </div>
+                  <div class="box-contents" style="padding: 10px;">
+                    Let $\pi$ be a finitely presented group, $r\in\mathbb{Z}_{>0}$ a positive integer and $\chi:\pi\to\mathbb{C}^\times$ a torsion complex character.
+                    <br>We say $\pi$ is <em>weakly integral</em> with respect to $(r,\chi)$ if, assuming there is a complex irreducible representation \[\rho:\pi\rightarrow\mathrm{GL}_r(\mathbb{C})\] with $\mathrm{det}(\rho)=\chi$, then for every prime number $\ell$ there is an irreducible representation \[\sigma_\ell:\pi\rightarrow\mathrm{GL}_r(\bar{\mathbb{Q}}_\ell)\] with $\mathrm{det}(\sigma_\ell)=\chi$ such that it factors through $\mathrm{GL}_r(\bar{\mathbb{Z}}_\ell)\hookrightarrow\mathrm{GL}_r(\bar{\mathbb{Q}}_\ell)$.
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </p>
+
+          <p>
+            A few comments on this definition:
+          </p>
+
+          <ol>
+            <li>
+              The definition is conditional on the existence of a rank $r$ complex irreducible representation of $\pi$ with fixed determinant. If the group $\pi$ does not admit such a representation, the condition is understood to be empty and, therefore, trivially true.
+            </li>
+            <li>
+              As usual in the context of $\ell$-adic cohomology, we can identify the algebraically closed fields $\mathbb{C}\sim\bar{\mathbb{Q}}_\ell$. With such an identification for every prime number $\ell$, we can compare the characters $\mathrm{det}(\sigma_\ell)$ and $\chi$.
+            </li>
+            <li>
+              Observe that the representations $\rho$ and $\sigma_\ell$ are "unrelated", and this is the reason why the property is <em>weak</em>.
+            </li>
+            <li>
+              Once we fix the algebraic isomorphisms $\mathbb{C}\sim\bar{\mathbb{Q}}_\ell$, if we find a representation $\rho$ with the required properties, then we obtain a $\bar{\mathbb{Q}}_\ell$-representation with the same properties, but possibly not integral. Hence the actual restriction in the definition is that it should factor through the homomorphism $\mathrm{GL}_r(\bar{\mathbb{Z}}_\ell)\hookrightarrow\mathrm{GL}_r(\bar{\mathbb{Q}}_\ell)$, which explain the <em>integrality</em> part of the name.
+            </li>
+          </ol>
+
+          <p>
+            Despite we can identify $\mathbb{C}\sim\bar{\mathbb{Q}}_\ell$ and argue as before, we can do better. Since $\pi$ is finitely presented, it is finitely generated in particular. This implies that any representation $\rho:\pi\rightarrow\mathrm{GL}_r(\mathbb{C})$ factors through $\mathrm{GL}_r(A)\hookrightarrow\mathrm{GL}_r(\mathbb{C})$ for some ring $A\subset\mathbb{C}$ of finite type (over $\mathbb{Z}$). Since for almost all prime numbers $\ell$ we have an injection $A\hookrightarrow\bar{\mathbb{Z}}_\ell$ (just take the completion with respect to a prime ideal of $A$ whose residue characteristic is $\ell$) we see that $\rho$ factors through $\mathrm{GL}_r(\bar{\mathbb{Z}}_\ell)$ for almost all prime numbers $\ell$.
+          </p>
+
+          <p>
+            Now we remove the parameters $(r,\chi)$ from the definition of weak integrality to say:
+          </p>
+
+          <p>
+            <aside id="info-block">
+              <section class="file-marker">
+                <div style="text-align: justify">
+                  <div class="box-title">
+                    <strong>Definition 3. (de Jong&mdash;Esnault)</strong>
+                  </div>
+                  <div class="box-contents" style="padding: 10px;">
+                    A finitely presented group $\pi$ is said to be <em>weakly integral</em> if it is weakly integral with respect to any pair $(r,\chi)$.
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </p>
+
+          <p>
+            The remarkable (and beautiful) theorem of de Jong and Esnault is
+          </p>
+
+          <p>
+            <aside id="info-block">
+              <section class="file-marker">
+                <div style="text-align: justify">
+                  <div class="box-title">
+                    <strong>Theorem. (de Jong&mdash;Esnault)</strong>
+                  </div>
+                  <div class="box-contents" style="padding: 10px;">
+                    If a finitely presented group $\pi$ is of geometric origin, then it is weakly integral.
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </p>
+
+          <span>
+            This theorem implies a new obstruction for a finitely presented group to be geometric, and de Jong and Esnault were interested in finding examples of groups that are not weakly integral. We present the first example in the next subsection, due to Breuillard.
+          </span>
+        </div>
+      </details>
+      <!--Subsection 1.3-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top: 2.5px; margin-bottom: 2.5px">
+            1.3. Breuillard's example
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+
+          <span>
+            The promised example is:
+          </span>
+
+          <p>
+            <aside id="info-block">
+              <section class="file-marker">
+                <div style="text-align: justify">
+                  <div class="box-title">
+                    <strong>Example. (Breuillard)</strong>
+                    </div>
+                  <div class="box-contents" style="padding: 10px;">
+                    The group $\langle a,b\vert a^2ba^{-2}b^{-2}\rangle$ is not weakly integral with respect to $(2,\mathbf{1})$ for the prime $2$.
+                  </div>
+                </div>
+              </section>
+            </aside>
+          </p>
+
+          <p>
+            Since the family of <em>not weakly integrals</em> groups I will tell you about later is a family of 1-relator 2-generated groups indexed by prime powers that are not weakly integral with respect to $(2,\mathbf{1})$ for the corresponding prime, it won't hurt us if we make some remarks about this example.
+          </p>
+
+          <ol>
+            <li>
+              Specializing the definition of weak integrality at the pair $(2,\mathbf{1})$ we only consider rank 2 representations with trivial determinant. This means that we only deal with representations that take values at $\mathrm{SL}_2(K)$ for $K$ some algebraically closed field of characteristic zero.
+            </li>
+            <li>
+              Failure of weak integrality with respect to the pair $(2,\mathbf{1})$ for some prime $\ell$ means that there are complex irreducible representations $\rho:\pi\rightarrow\mathrm{SL}_2(\mathbb{C})$ but, after identifying $\mathbb{C}\sim\bar{\mathbb{Q}}_\ell$, any of them factor through $\mathrm{SL}_2(\bar{\mathbb{Z}}_\ell)$.
+            </li>
+          </ol>
+
+          <span>
+            Implicit in Breuillard's example is that somehow we can study all the complex irreducible SL<sub>2</sub>-representations of the group $\langle a,b\vert a^2ba^{-2}b^{-2}\rangle$. This is achieved using the theory of $\mathrm{SL}_2$-character varieties, plus some additional remarks. We review this theory in the next section, and present some computable mathematics.
+          </span>
+        </div>
+      </details>
+    </details>
+
+    <hr>
+
+    <!--Section 2-->
+    <details class="ToCDetails">
+      <summary class="ToCDetails">
+        <div style="text-align: center">
+          2. SL<sub>2</sub>-character varieties
+        </div>
+      </summary>
+      <!--Subsection 2.1-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top: 2.5px; margin-bottom: 2.5px">
+            2.1. Some ideas on character varieties
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            When we consider complex linear representations of finite groups, first we study the conjugacy classes of the group (since central functions are not sensible to conjugation) and then use orthogonal relations between and operations of representations to construct the famous <em>character tables</em>. The orthogonality of irreducible characters makes essential usage of the finiteness of the group (or some sort of topology on $\pi$ in general). When we work with character varieties for abstract finitely generated groups, we make use of the geometrical structure of linear groups to understand the possible characters. Note that we will still be using a finite amount of information, a noetherian algebraic set, but it will be far from a character table.
+          </span>
+
+          <p>
+            Let $\pi$ be a finitely generated group $\pi:=\langle s_1,\dots,s_n \vert r_\lambda; \lambda\in\Lambda\rangle$. Let $G/\mathbb{C}$ be a complex linear algebraic group. We think of $G$ as a group of matrices with some properties.
+          </p>
+
+          <p>
+            For every $\mathbb{C}$-algebra $R$, any group homomorphism $\rho: \pi\rightarrow G(R)$ is determined by $n$ elements of $S_i\in G(R)$ verifying the conditions $r_\lambda(S_1,\dots,S_n)=I$ for every $\lambda$. If we vary $R$ we obtain an affine subscheme of $G^n$. More explicitly, the functor of points of this affine scheme is the one defined by: \[R\in\mathbb{C}{\tt -alg}\longmapsto \mathrm{Hom}_{\tt Group}(\pi,G(R))\in{\tt Sets}.\]
+          </p>
+
+          <p>
+            Observe that, like in the representation theory of finite groups, it is desirable to reduce the amount of information used to describe characters. For example, it would be useful to understand when two elements of $\pi$ are conjugated. For abstract finitely presented groups this may be difficult, but for $t\in\pi$ the representations $\rho$ and $\rho^t$ (precomposition with conjugation by $t$) are conjugate representations. Hence, we can consider the points of the scheme $\mathrm{Hom}_{\tt Group}(\pi,G)$ up to conjugation by $G$, which is a moduli space.
+          </p>
+
+          <p>
+            So we define the $G$-character variety of $\pi$, denoted by $M(\pi,G)$ to be the affine scheme $\mathrm{Hom}_{\tt Group}(\pi,G)//G$, where $G$ acts by conjugation. From the point of view of scheme theory this definition is technical (it is a GIT quotient). But, as we will see soon, these problems are not very important for the case of a 2-generated groups $\pi$ and $G=\mathrm{SL}_2$.
+          </p>
+
+          <span>
+            To informally motivate the name "character variety", morally the coordinates of the resulting moduli space $M(\pi,G)$ are the functions \[\begin{matrix}x_i:&\mathrm{Hom}_{\tt Group}(\pi,G) &\longrightarrow &\mathbb{C}\\ &\rho &\longmapsto &\mathrm{tr}\ \rho(s_i).\end{matrix}\]</p> These "variables" should be enough to describe every "central" function defined over the scheme $\mathrm{Hom}_{\tt Group}(\pi,G)$. But, as I said, this is just an idea since in general, these functions are not always enough (we need more generators of the group $\pi$, that may be redundant for the group but not for the character variety) and are not neccessarily algebraically independent. For the case of $\mathrm{SL}_2$, we will find the former phenomena for $F_2$. The latter happens for example for $\pi=F_3$ and $G=\mathrm{SL}_2$, but we won't consider this situation here (consult [<a href="#Gol09">Gol09</a>] for a good exposition).
+          </span>
+        </div>
+      </details>
+      <!--Subsection 2.2-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            2.2. SL<sub>2</sub>-representations of 2-generated groups
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            Suppose there is a surjection $F_2=\langle a,b\rangle\twoheadrightarrow\pi$ (i.e. $\pi$ is 2-generated) and let $\rho:\pi\rightarrow\mathrm{SL}_2(\mathbb{C})$ be a representation of $\pi$. Clearly, $\rho$ is determined by two $\mathrm{SL}_2(\mathbb{C})$-matrices $A:=\rho(a)$, $B:=\rho(b)$ such that $A$ and $B$ satisfy all the relations defining the group $\pi$. In particular, we can use Cayley&mdash;Hamilton for the matrices $A$ and $B$. We see below how much information can we extract from this.
+          </span>
+        </div>
+        <!--Subsubsection 2.2.1-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails">
+              2.2.1. Cayley&mdash;Hamilton.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              Using the notation introduced before, and writing $x:=\mathrm{tr}\ A$, $y:=\mathrm{tr}\ B$, we can write Cayley&mdash;Hamilton relations for $A$ in the following two equivalent forms (analogous for $B$): \[A^2-x\cdot A + I=0,\quad\quad A+A^{-1}=x\cdot I.\] Therefore, for any integer $n\in\mathbb{Z}$, there exists two monic polynomials $c_n(t),d_n(t)\in\mathbb{Z}[t]$ such that $A^n = c_n(x)\cdot A + d_n(x)\cdot I$ (for this we only use that $A$ has determinant $1$).
+            </span>
+
+            <p>
+              The polynomials $c_n(t),d_n(t)$ will play an important role later, so we mention a few properties here. By writing $A^{n+1}=A\cdot A^n$ we get the following recursive formulas for them: \[\begin{aligned}c_{n+1}(t)&= tc_n(t)+d_n(t),\\ d_{n+1}(t)&=-c_n(t).\end{aligned}\] If we write the matrix that express the recurrence formulas, we find that \[\begin{pmatrix}c_{n+1}(t) &c_n(t)\\ d_{n+1}(t) &d_n(t)\end{pmatrix} = \begin{pmatrix}t &1\\ -1 &0\end{pmatrix}^n\quad \forall n\in\mathbb{Z}.\] In particular, taking the determinant, it follows that \[c_n(t)^2+d_n(t)^2+tc_n(t)d_n(t)-1=0.\] This implies that $c_n(t)$ and $d_n(t)$ does not vanish simultaneously. For many more properties of these polynomials I refer to the paper, or just observe that $c_n(t)=U_{n-1}(t/2)$ where $U_k$ are the Chebyshev polynomials of the second kind.
+            </p>
+
+            <p>
+              Now consider the "variable" $z:=\mathrm{tr}\ AB$. It is interesting that we can describe the image by a representation $\rho$ of any word $\omega(a,b)\in F_2$ as a "linear" combination of the matrices $I$, $A$, $B$ and $AB$ with polynomial coefficients in the variables $x,y,z$. Indeed, consider the following word: \[\begin{aligned}BA &= z\cdot I - A^{-1}B^{-1} = z\cdot I - (-A+x\cdot I)(-B+y\cdot I)\\ &= (z-xy)\cdot I + y\cdot A + x\cdot B - AB.\end{aligned}\] The statement on arbitrary word follows easily using this formula.
+            </p>
+
+            <span>
+              This in particular implies that the trace of the image by $\rho$ of an arbitrary word can be written as a polynomial in the variables $x$, $y$, $z$. Moreover, there are no algebraic dependences between the variables $x$, $y$, $z$ besides those derived from the relations defining the group $\pi$.
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+        <!--Subsubsection 2.2.2-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails" style="float: left">
+              2.2.2. Fricke&mdash;Klein&mdash;Vogt's theorem.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              The discussion above should be enough to convince you of the validity of the following classical theorem (for a down to earth and very beatiful exposition, read [<a href="#Gol09">Gol09</a>]):
+            </span>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title" id="thm:FrickeKleinVogt">
+                      <strong>Theorem. (Fricke&mdash;Klein&mdash;Vogt)</strong>
+                    </div>
+                    <div class="box-contents" style="text-align: center; padding: 10px;">
+                      $M(F_2,\mathrm{SL}_2)\simeq \mathbb{A}^3_{x,y,z}$.
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              Morally, every function invariant under conjugation can be expressed as a polynomial in the algebraically independent "coordinates" \[x,y,z:\mathrm{Hom}_{\tt Group}(\pi,\mathrm{SL}_2(\mathbb{C}))\rightarrow \mathbb{C}\] defined respectively by $x:\rho\mapsto \mathrm{tr}\ \rho(a)$, $y:\rho\mapsto \mathrm{tr}\ \rho(b)$ and $z:\rho\mapsto \mathrm{tr}\ \rho(ab)$.
+            </p>
+
+            <span>
+              If the group $\pi$ has only one relation (the number of relations does not really matter but this is all we need) $r(a,b)\in F_2$, then $\rho(r)=r(A,B)$ can be written  in terms of the matrices $I$, $A$, $B$ and $AB$ with polynomial coefficients. Using Fricke&mdash;Klein&mdash;Vogt theorem we can present the $\mathrm{SL}_2$-character variety of $\pi$ as a Zariski closed subscheme of $\mathbb{A}^3_{x,y,z}$. In fact, if $r(A,B) = p_I\cdot I + p_A\cdot A + p_B\cdot B + p_{AB}\cdot AB$, then $M(\pi,\mathrm{SL}_2)$ would be \[\begin{aligned}V(&zp_{AB}+yp_B+xp_A+2p_I,\\ &(xz-y)p_{AB}+zp_B+(x^2-2)p_A+xp_I,\\ &(yz-x)p_{AB}+(y^2-2)p_B+zp_A+yp_I,\\ &(z^2-2)p_{AB}+(yz-x)p_B+(xz-y)p_A+zp_I).\end{aligned}\]
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+        <!--Subsubsection 2.2.3-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails" style="float: left">
+              2.2.3. $\mathrm{SL}_2$-irreducible representations of 2-generated groups.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              At this point we have some machinery to study all the complex SL<sub>2</sub>-representations of a 2-generated group $\pi$, but to study weak integrality of $\pi$ we have to understand only irreducible representations. We explain how irreps. appear in the picture drawn by Fricke&mdash;Klein&mdash;Vogt. Using the same notation as before ($A:=\rho(a)$, $B:=\rho(b)$, $x:=\mathrm{tr}\ A$, $y:=\mathrm{tr}\ B$ and $z:=\mathrm{tr}\ AB$) we have the following
+            </span>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title" id="thm:Burnside">
+                      <strong>Theorem. (Burnside)</strong> [<a href="#Gol09">Gol09</a>, Proposition 2.3.1]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\rho:\pi\to\mathrm{SL}_2$ be a representation. The following are equivalent:
+                        <ol type="a">
+                          <li>
+                            $\rho$ is irreducible;
+                          </li>
+                          <li>
+                            $\mathrm{tr}\ ABA^{-1}B^{-1} \neq 2$;
+                          </li>
+                          <li>
+                            The set $\{I,A,B,AB\}$ is a $\mathbb{C}$-basis of $\mathrm{Mat}_{2\times2}(\mathbb{C})$.
+                          </li>
+                        </ol>
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              The word $ABA^{-1}B^{-1}$ expressed using the matrices $\{1,A,B,AB\}$ is \[(y^2-1)\cdot I + (x-yz)\cdot A - y\cdot B + z\cdot AB.\] Its trace is $x^2+y^2+z^2-xyz-2$ and condition (b) above is just ${\tt red}:=x^2+y^2+z^2-xyz-4\neq 0$. Hence, we can detect irreducibility using Fricke&mdash;Klein&mdash;Vogt's coordinates. In particular, using coordinates we just work with the basic open set $\mathrm{D}({\tt red}) \subset M(\pi,\mathrm{SL}_2)$.
+            </p>
+
+            <span>
+              Moreover, if we assume $\pi$ is presented with a single relator $r(a,b)$ and write it in terms of $I$, $A$, $B$ and $AB$ as follows: \[r(A,B)=p_I\cdot I + p_A\cdot A + p_B\cdot B + p_{AB}\cdot AB,\] then condition (c) implies that the "variety" of irreps (up to conjugation) in terms of the variables $x$, $y$ and $z$ is simply the following constructible set \[V(p_I,p_A,p_B,p_{AB})\cap \mathrm{D}({\tt red})\subset \mathbb{A}^3_{x,y,z}.\]
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+      </details>
+      <!--Subsection 2.3-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            2.3. Technical digression: using group algebras
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            The previous approach is good to get the intuition but it is not completely clear the way we treat the "generic" representation $\rho$ and the "variables" $A$, $B$, $x$, $y$ and $z$.
+          </span>
+          
+          <p>
+            Now we use the concept of group algebras to give the correct construction. Below we follow closely [<a href="#BH95">BH95</a>]. This subsection is more technical and can be skipped without risk.
+          </p>
+
+          <span>
+            We introduced the "variables" $A$ and $B$ in order to make use of Cayley&mdash;Hamilton, otherwise it would not make any sense for the symbols $a,b\in\pi$. Nevertheless, we do not need to add new symbols as soon as we can operate linearly with words in $\pi$. In other words, we just need the group algebra $\mathbb{Z}\pi$ to express Cayley&mdash;Hamilton in an "universal" way.
+          </span>
+        </div>  
+        <!--Subsubsection 2.3.1-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails" style="float: left">
+            2.3.1. The Cayley&mdash;Hamilton algebra.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              Recall that $\mathbb{Z}\pi$ is defined to be the set of all finite formal linear integral combinations of elements of $\pi$. Hence, we can consider the element $g+g^{-1}\in\mathbb{Z}\pi$. If $g$ is a $\mathrm{SL}_2$-matrix, then $g+g^{-1} = \mathrm{tr}(g)\cdot I$. Unfortunately, for us $g$ is an arbitrary word in the abstract group $\pi$, so it is not clear what do we mean by trace in this case.
+            </span>
+            
+            <p>
+              Consider the two-sided ideal $(h(g+g^{-1})-(g+g^{-1})h;\ g,h\in\pi)\subset\mathbb{Z}\pi$. This ideal "contains" the SL<sub>2</sub>-Cayley&mdash;Hamilton condition for every element $g\in\pi$ (actually for every element of $\mathbb{Z}\pi$) in a "central" form, and every consequence that derives from it. Hence, we consider the non-commutative ring \[H[\pi] := \frac{\mathbb{Z}\pi}{(h(g+g^{-1})-(g+g^{-1})h;\ g,h\in\pi)}.\]
+            </p>
+            
+            <p>
+              These relations arise form the observation that, if $\rho : \pi \to \mathrm{SL}_2(R)$ is an $R$-valued representation of $\pi$, then by Cayley&mdash;Hamilton the matrix $\rho(g)+\rho(g)^{-1}=\mathrm{tr}(\rho(g))\cdot I$ is a central  matrix. Therefore, its commutator with any element lies in the kernel of $\tilde\rho : \mathbb{Z}\pi \to \mathrm{Mat}_{2\times2}(R)$ linearly extending $\rho$, i.e. \[\tilde\rho\big(\sum n_g g\big):= \sum n_g\rho(g).\]
+            </p>
+
+            <p>
+              With this interpretation in mind, define the $\mathbb{Z}$-linear map $T: H[\pi]\to H[\pi]$ called ''trace'' by the formula $T(x) = x+\iota(x)$ where $\iota$ is the $\mathbb{Z}$-linear extension of $g\mapsto g^{-1}$.
+            </p>
+
+            <p>
+              By construction, $T(g)$ is mapped to $\mathrm{tr}\ \rho(g)\cdot I$ under any $\mathbb{Z}$-algebra map $\tilde\rho : H[\pi]\to\mathrm{Mat}_{2\times2}(R)$ extending a representation $\rho:\pi\to\mathrm{SL}_2(R)$. Denote by $TH[\pi]$ the subalgebra of $H[\pi]$ generated by the subset $\mathbb{Z}\cup\{T(x)\vert x\in H[\pi]\}$, which is commutative. Now $H[\pi]$ can be seen as an algebra over the commutative ring $TH[\pi]$.
+            </p>
+
+            <p>
+              The key feature of $H[\pi]$ is that, for any commutative ring $R$, representations $\rho:\pi\to\mathrm{SL}_2(R)$ are in bijection with involution preserving algebra homomorphisms $\tilde\rho:H[\pi]\to\mathrm{Mat}_{2\times2}(R)$ (see [<a href="#BH95">BH95</a>, Proposition 1.3]).
+            </p>
+
+            <p>
+              The following theorem is a key result for us:
+            </p>
+            
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title">
+                      <strong>Theorem.</strong> [<a href="#BH95">BH95</a>, Proposition 3.1]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      If $\pi$ is generated by two elements $a,b$, then the ring $TH[\pi]$ is generated over $\mathbb{Z}$ by $\{x:=T(a),y:=T(b),z:=T(ab)\}$ and $H[\pi]$ is spanned as $TH[\pi]$-module by the set $\{1,a,b,ab\}$. The product on $H[\pi]$ is described by the following table:
+                      <table style="margin-left: auto; margin-right: auto;">
+                        <tbody>
+                          <tr style="background-color: #E7E7E7">
+                            <td style="background-color: #FFFFFF">
+                            </td>
+                            <td style="text-align: center;">
+                              $a$
+                            </td>
+                            <td style="text-align: center;">
+                              $b$
+                            </td>
+                            <td style="text-align: center;">
+                              $ab$
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="text-align: center">
+                              $a$
+                            </td>
+                            <td style="text-align: center">
+                              $-1+x\cdot a$
+                            </td>
+                            <td style="text-align: center">
+                              $ab$
+                            </td>
+                            <td style="text-align: center">
+                              $-b+x\cdot ab$
+                            </td>
+                          </tr>
+                          <tr style="background-color: #E7E7E7">
+                            <td style="background-color: #FFFFFF; text-align: center">
+                              $b$
+                            </td>
+                            <td style="text-align: center">
+                              $(z-xy)+y\cdot a + x\cdot b - ab$
+                            </td>
+                            <td style="text-align: center">
+                              $-1+y\cdot b$
+                            </td>
+                            <td style="text-align: center">
+                              $-x + a + z\cdot b$
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="text-align: center">
+                              $ab$
+                            </td>
+                            <td style="text-align: center">
+                              $-y+z\cdot a+b$
+                            </td>
+                            <td style="text-align: center">
+                              $-x+y\cdot ab$
+                            </td>
+                            <td style="text-align: center">
+                              $-1+z\cdot ab$
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              Moreover, if $\pi=F_2$ is the free group on two generators $a,b$, then $TH[F_2]=\mathbb{Z}[x,y,z]$, i.e. the elements $x,y,z$ are algebraically independent [<a href="#BH95">BH95</a>, Proposition 3.2].
+            </p>
+
+            <p>
+              Define \[\mathsf{red}:=x^2+y^2+z^2-xyz-4 = T(aba^{-1}b^{-1})-2\in TH[\pi],\] for $\pi$ a 2-generated group. We have the following "structure" theorem for $H[\pi]$ as $TH[\pi]$-module:
+            </p>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title" id="thm:Structure">
+                      <strong>(Structure) Theorem.</strong> [<a href="#BH95">BH95</a>,Propositon 3.5]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\pi$ be a group generated by two elements $a,b$ and let $\varphi : TH[\pi]\to R$ a ring homomorphism such that $\varphi(\mathsf{red})$ is not a zero-divisor. Then $R\otimes_{TH[\pi]}H[\pi]$ is free of rank 4 over $R$, with basis $\{1\otimes1,1\otimes a,1\otimes b,1\otimes ab\}$.
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              In particular, if we take the group $\pi=F_2$ and the homorphism $\varphi=\mathrm{id}$, we find that the algebra $H[F_2]$ is free of rank 4 over $TH[\pi]=\mathbb{Z}[x,y,z]$. These two statements can be understood as another form of <a href="#thm:FrickeKleinVogt">Fricke&mdash;Klein&mdash;Vogt theorem</a>.
+            </p>
+
+            <span>
+              Finally, the calculation of $H[F_2]$ allows us to study arbitrary $2$-generated groups via the following general result:
+            </span>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title">
+                      <strong>Theorem.</strong> [<a href="#BH95">BH95</a>,Proposition 1.4]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Suppose the group $\pi$ is obtained from group $\hat\pi$ by taking its quotient by the smallest normal subgroup containing a family of words $\{\omega_j(g_i^{\pm1})\}$ where $g_i\in\hat\pi$. Then $H[\pi]$ is obtained from $H[\hat\pi]$ by dividing $H[\hat\pi]$ by the two-sided ideal generated by the elements $\{\omega_j-1\}$, i.e. \[H[\pi] \simeq \frac{H[\hat\pi]}{(\omega_j-1)}.\]
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              Combining these results for $\pi := \langle a,b\vert w_j(a,b)\rangle$, it follows that \[H[\pi]\simeq \frac{TH[F_2] \oplus TH[F_2]\cdot a \oplus TH[F_2]\cdot b \oplus TH[F_2]\cdot ab}{((c_{j,1}-1) + c_{j,a}\cdot a+c_{j,b}\cdot b+c_{j,ab}\cdot ab)},\] where $w_j(a,b)=c_{j,1} + c_{j,a}\cdot a+ c_{j,b}\cdot b + c_{j,ab}\cdot ab\in H[F_2]$ and $TH[F_2]=\mathbb{Z}[x,y,z]$.
+            </p>
+
+            <span>
+              However, it is not easy to find an expression for $TH[\pi]$. In general, we just know $T(\omega_j-1)$, $T(a\cdot (\omega_j-1))$, $T(b\cdot(\omega_j-1))$ and $T(ab\cdot(\omega_j-1))$ are elements of $(\omega_j-1)\cap TH[\pi]$. If we invert $2$ in $\mathbb{Z}$, i.e. we work over $\mathbb{Z}[1/2]$, then these elements generate the ideal $(\omega_j-1)\cap TH[\pi]$ (see [<a href="#BH95">BH95</a>, Proposition 2.11]).
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+        <!--Subsubsection 2.3.2-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails" style="float: left">
+            2.3.2. Irreducibility: absolute and generic.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              In this "absolute" approach over $\mathbb{Z}$ there are two sensible notions of irreducibility of representations. They are the following: 
+            </span>
+            
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title">
+                      <strong>Definition.</strong>
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\pi$ be a 2-generated group, $R$ a commutative ring and $\rho : \pi\to \mathrm{SL}_2(R)$ a representation.
+                      <ol type="a">
+                        <li>
+                          $\rho$ is <i>absolutely irreducible</i> if the image of the morphism $\tilde\rho : H[\pi]\to\mathrm{Mat}_{2\times2}(R)$ generates $\mathrm{Mat}_{2\times2}(R)$ over $R$.
+                        </li>
+                        <li>
+                          $\rho$ is <i>irreducible</i> if no non-trivial proper subspace of $R^2$ is invariant under the action of $\pi$ via $\rho$.
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              Clearly, absolute irreducibility implies irreducibility. Moreover, over an algebraically closed field both notions coincide (this is <a href="#thm:Burnside"><i>Burnside theorem</i></a>).
+            </p>
+            
+            <p>
+              The following result makes clear the crucial role played by the polynomial $\mathsf{red}$:
+            </p>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title">
+                      <strong>Theorem.</strong> [<a href="#BH95">BH95</a>, Proposition 4.1]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\pi$ be generated by $a,b$ and $\rho:\pi\to \mathrm{SL}_2(R)$ a representation. The following conditions are equivalent:
+                      <ol type="a">
+                        <li>
+                          $\rho$ is absolutely irreducible;
+                        </li>
+                        <li>
+                          $1\otimes\tilde\rho:R\otimes_{TH[\pi]}H[\pi]\to \mathrm{Mat}_{2\times2}(R)$ is an isomorphism, the $TH[\pi]$-module structure on $R$ coming from $\tilde\rho\vert_{TH[\pi]}$;
+                        </li>
+                        <li>
+                          $\tilde\rho(\mathsf{red})\in R^\times$.
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              As a corollary, we can understand absolute irreducibility in the following geometric way:
+            </p>
+
+            <p>
+              Let $R$ be a commutative ring. Then $\rho:\pi\to\mathrm{SL}_2(R)$ is abs. irred. $\Leftrightarrow$ $\tilde\rho(\mathsf{red})\in R^\times$ $\Leftrightarrow$ $\tilde\rho(\mathsf{red})\in \overline{k}^\times$ for every geom. point $R\to \overline{k}$ [to see this, specialize this property to the morphisms $R\to R/\mathfrak{m} \to (R/\mathfrak{m})^{\texttt{alg}}$ for every maximal ideal $\mathfrak{m}\subset R$] $\Leftrightarrow$ $\rho : \pi \to \mathrm{SL}_2(\overline{k})$ is abs. irred. for every geom. point $R\to\overline{k}$ $\Leftrightarrow$ $\rho:\pi\to\mathrm{SL}_2(\overline{k})$ is irred. for every geom. point $R\to\overline{k}$ [this last equivalence is <a href="#thm:Burnside"><i>Burnside's theorem</i></a>].
+            </p>
+
+            <p>
+              Furthermore, after the <a href="#thm:Structure"><i>Structure theorem</i></a>, the absolute irreducibility of $\rho$ implies $R\otimes_{TH[\pi]}H[\pi]$ is free of rank 4 over $R$, with basis $\{1\otimes1,1\otimes a,1\otimes b,1\otimes ab\}$.
+            </p>
+
+            <p>
+              Finally, the next two results allow us two uniquely (over a field up to conjugation) reconstruct a representation from its character:
+            </p>
+            
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title" id="thm:Reconstruction">
+                      <strong>(Reconstruction) Theorem.</strong> [<a href="#BH95">BH95</a>, Proposition 4.3]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\pi$ be generated by $a,b$ and let $R$ be an arbitrary commutative ring. If $\varphi:TH[\pi]\to R$ is such that $\varphi(\mathsf{red})$ is not a zero divisor, then $\varphi$ extends to an involution preserving algebra homomorphism $\tilde\rho:H[\pi]\to\mathrm{Mat}_{2\times2}(R')$, where $R'$ is either $R$ or a quadratic extension of $R$. Moreover, if $\varphi(\mathsf{red})\in R^\times$, then the induced representation $\rho:\pi\to\mathrm{SL}_2(R')$ is absolutely irreducible.
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <p>
+              <aside id="info-block">
+                <section class="file-marker">
+                  <div style="text-align: justify">
+                    <div class="box-title" id="thm:Uniqueness">
+                      <strong>(Uniqueness) Theorem.</strong> [<a href="#BH95">BH95</a>, Proposition 4.5]
+                    </div>
+                    <div class="box-contents" style="text-align: left; padding: 10px;">
+                      Let $\pi$ be generated by $a,b$ and let $R$ be an arbitrary field. Then any two absolutely irreducible representations $\pi\to\mathrm{SL}_2(R)$ with the same trace are conjugate.
+                    </div>
+                  </div>
+                </section>
+              </aside>
+            </p>
+
+            <span>
+              We combine several results below using schemes.
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+        <!--Subsubsection 2.3.3-->
+        <details class="subToCDetails">
+          <summary class="subToCDetails" style="float: left">
+            2.3.3. The character variety as a scheme.
+          </summary>
+          <div style="text-align: justify; text-indent: 5px">
+            <span>
+              We particularize to 2-generated 1-relator groups $\pi=\langle a,b\vert \omega(a,b)=1\rangle$.
+            </span>
+
+            <p>
+              We already know that, for $F_2=\langle a,b\vert\emptyset\rangle$, $TH[F_2]=\mathbb{Z}[x,y,z]$ is a domain therefore $H[F_2]$ is the free $\mathbb{Z}[x,y,z]$-module with basis $\{1,a,b,ab\}$. In particular, $M(F_2,\mathrm{SL}_2) = \mathbb{A}^3_{x,y,z}$. Furthermore, we know that the scheme of absolutely irreducible representations $M^{\texttt{irr}}(F_2,\mathrm{SL}_2)$ (i.e. irreducible over every geometric point) corresponds to the basic open affine $\mathrm{D}(\mathsf{red}) \subset \mathbb{A}^3_{x,y,z}$ where $\mathsf{red} = x^2+y^2+z^2-xyz-4$.
+            </p>
+
+            <p>
+              $H[F_2]$ being free implies we can write $\omega(a,b) = c_1-1 + c_a\cdot a+c_b\cdot b+c_{ab}\cdot ab$ for some polynomials $c_g\in\mathbb{Z}[x,y,z]$ for $g\in\{1,a,b,ab\}$. We immediately obtain \[H[\pi] = \frac{H[F_2]}{(c_1+c_aa+c_bb+c_{ab}ab)}.\] However, this presentation does not lead to a description of $TH[\pi]$. After base change to the ring $\mathbb{Z}[1/2]$, we obtain \[TH[\pi]\otimes\mathbb{Z}[1/2] = \frac{\mathbb{Z}[1/2][x,y,z]}{(T\ g\cdot(\omega(a,b)-1))_{g\in\{1,a,b,ab\}}}.\] Observe that
+              <table style="margin-left: 30px; margin-right:30px;">
+                <tbody>
+                  <tr>
+                    <td>
+                      $T\ (\omega(a,b)-1)$
+                    </td>
+                    <td>
+                      $=$
+                    </td>
+                    <td>
+                      $2(c_1-1)+xc_a+yc_b+zc_{ab}$;
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      $T\ a(\omega(a,b)-1)$
+                    </td>
+                    <td>
+                      $=$
+                    </td>
+                    <td>
+                      $xc_1 + (x^2-2)c_x+zc_b+(xz-y)c_{ab}$;
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      $T\ b(\omega(a,b)-1)$
+                    </td>
+                    <td>
+                      $=$
+                    </td>
+                    <td>
+                      $yc_1+zc_a+(y^2-2)c_b+(yz-x)c_{ab}$;
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      $T\ ab(\omega(a,b)-1)$
+                    </td>
+                    <td>
+                      $=$
+                    </td>
+                    <td>
+                      $zc_1+(xz-y)c_a+(yz-x)c_b+(z^2-2)c_{ab}$.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              This means that, $M(\pi,\mathrm{SL}_2)$ corresponds, over the basic open $D(2)\subset\mathrm{Spec}(\mathbb{Z})$, to the algebraic set \[\begin{aligned}V(&2(c_1-1)+xc_a+yc_b+zc_{ab},\\ &xc_1 + (x^2-2)c_x+zc_b+(xz-y)c_{ab},\\ &yc_1+zc_a+(y^2-2)c_b+(yz-x)c_{ab},\\ &zc_1+(xz-y)c_a+(yz-x)c_b+(z^2-2)c_{ab})\end{aligned}\] inside $M(F_2,\mathrm{SL}_2)=\mathbb{A}^3_{x,y,z}$.
+            </p>
+
+            <p>
+              Moreover, again over $\mathrm{D}(2)\subset\mathrm{Spec}(\mathbb{Z})$, we can identify $M^{\texttt{irr}}(\pi,\mathrm{SL}_2)$ with the intersection of the previous algebraic set with the basic open $\mathrm{D}(\mathsf{red})$ inside $\mathbb{A}^3_{x,y,z}$. In fact, we can do better because for irreducible representations the set $\{1,a,b,ab\}$ is a basis, hence $M^{\texttt{irr}}(\pi,\mathrm{SL}_2)$ is identified with the constructible set $V(c_1-1,c_a,c_b,c_{ab})\cap \mathrm{D}(\mathsf{red})$ inside $\mathbb{A}^3_{x,y,z}$.
+            </p>
+
+            <span>
+              Finally, let me mention that we are not interested in absolutely irreducible representations, but on those representations irreducible over $\mathbb{C}$. To study these points, we define $M^{\texttt{gen.irr}}(\pi,\mathrm{SL}_2)$ as the scheme-theoretic image of the morphism $M^{\texttt{irr}}(\pi,\mathrm{SL}_2)_{\mathbb{Q}}\to M(\pi,\mathrm{SL}_2)$. By definition, it follows that $M^{\texttt{gen.irr}}(F_2,\mathrm{SL}_2)=M(F_2,\mathrm{SL}_2)$. In general, it can be shown that [<a href="CG24">CG24</a>, Proposition 5] $M^{\texttt{gen.irr}}(\pi,\mathrm{SL}_2)$ is cut out by the $w$-elimination ideal of $(c_1-1,c_a,c_b,c_{ab},w\cdot\mathsf{red}-1)\subset \mathbb{Q}[x,y,z,w]$.
+            </span>
+          </div>
+        </details>
+        <div class="left"></div>
+      </details>
+      <!--Subsection 2.4-->
+      <details class="ToCDetails" id="section:2.4">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            2.4. How to compute: SageMath code
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            With the following piece of code we can compute the algebra $H[F_2]$:
+          </span>
+
+          <pre><code class="language-python"  data-ln-start-from="1"># The Cayley--Hamilton algebra of F₂ over &integers;
+BaseRing.&lt;x,y,z&gt; = PolynomialRing(ZZ,3)
+Alg = FreeAlgebra(BaseRing,2)
+Mon = Alg.monoid()
+a, b = Mon.gens()
+mons = [Mon(1), a, b, a*b]
+M = MatrixSpace(BaseRing,4) # Matrices for the algebra
+mats = [M([0,1,0,0, -1,x,0,0, z-x*y,y,x,-1, -y,z,1,0]),
+        M([0,0,1,0, 0,0,0,1, -1,0,y,0, 0,-1,0,y])]
+H.&lt;a,b&gt; = Alg.quotient(mons, mats)</code></pre>
+
+          <p>
+            This implementation has a major limitation: $a^{-1}$ cannot be directly computed. But observe that
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: a*(x-a)
+  1</code></pre><pre><code class="language-python nohljsln">sage: (x-a)*a
+  1</code></pre>
+          
+          <p>
+            And we do, for example:
+          </p>
+          
+          <pre><code class="language-python nohljsln">sage: a^2 * b * (x-a)^2 * (y-b)^2 # a²ba⁻²b⁻²
+  (x*y^2*z-x^2*y-x*z+y) - (x^2*y^2*z-x^3*y-x*y^3-x^2*z+3*x*y)*a - (x*y*z-x^2+1)*b + (x^2*y*z-x^3-x*y^2+2*x)*a*b</code></pre>
+
+          <p>
+            The trace map $T:H[F_2]\to TH[F_2]$ is defined as follows:
+          </p>
+
+          <pre><code class="language-python" data-ln-start-from="11">ts = [2,x,y,z]
+def T(w): # T : H[F₂] → TH[F₂]
+    ws = w.vector() # Coord. wrt. (1,a,b,ab)
+    t=0
+    for i in range(4):
+        t += ts[i]*ws[i]
+    return t</code></pre>
+
+          <p>
+            Now we study Breuillard's example. First calculate $T(g \cdot (a^2ba^{-2}b^{-2}-1))$ for $g\in\{1,a,b,ab\}$:
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: T(a^2 * b * (x-a)^2 * (y-b)^2 - 1)
+  -x^3*y^2*z + x^4*y + x^2*y^3 + x^2*y*z^2 - 4*x^2*y + y - 2</code></pre><pre><code class="language-python nohljsln">sage: T(a * (a^2 * b * (x-a)^2 * (y-b)^2 - 1))
+  -x^4*y^2*z + x^5*y + x^3*y^3 + x^3*y*z^2 + x^2*y^2*z - 5*x^3*y - x*y^3 - x*y*z^2 + 5*x*y - x - z</code></pre><pre><code class="language-python nohljsln">sage: T(b * (a^2 * b * (x-a)^2 * (y-b)^2 - 1))
+  -x^3*y*z + x^4 + x^2*y^2 + x^2*z^2 - 4*x^2 - y + 2</code></pre><pre><code class="language-python nohljsln">sage: T(a*b * (a^2 * b * (x-a)^2 * (y-b)^2 - 1))
+  -x^3*y^2*z^2 + x^4*y*z + 2*x^2*y^3*z + x^2*y*z^3 - x^3*y^2 - x*y^4 - x*y^2*z^2 - 5*x^2*y*z + x^3 + 5*x*y^2 + x*z^2 - 3*x - z</code></pre>
+
+          <p>
+            Also define:
+          </p>
+
+          <pre><code class="language-python" data-ln-start-from="18">red = T(a * b * (x-a) * (y-b)) - 2
+redQ=PolynomialRing(QQ,'x, y, z')(red)
+          </code></pre><pre><code class="language-python nohljsln">sage: red
+  -x*y*z + x^2 + y^2 + z^2 - 4</code></pre>
+          
+          <p>
+            Define the SL<sub>2</sub>-character variety associated to $\langle a,b\vert a^2ba^{-2}b^{-2}\rangle$:
+          </p>
+
+          <pre><code class="language-python" data-ln-start-from="20">w = a^2 * b * (x-a)^2 * (y-b)^2
+I = PolynomialRing(QQ,'x, y, z').ideal(T(w - 1),
+                                       T(a * (w - 1)),
+                                       T(b * (w - 1)),
+                                       T(a*b * (w - 1)))</code></pre>
+
+          <p>
+            Observe that we are considering the ideal over the ring $\mathbb{Q}[x,y,z]$. Now we can ask SageMath for the primary decomposition of this ideal. Furthermore, we ask if the components are reduced (prime), for their generators and if the points correspond to irreps. (by checking if the reduction of $\mathsf{red}$ in the component is non-zero):
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: for P in I.primary_decomposition():
+         print(f'Primary component of dimension {P.dimension()}.')
+         print(f'  Is it prime? {P.is_prime()}.')
+         print(f'  It is generated by {P.gens()}.')
+         print(f'  Is red a unit in the quotient? {redQ.reduce(P)}')
+         print()
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [y + 1, x + 2*z, 2*z^2 - 1].
+    Is red a unit in the quotient? -3/2
+
+  Primary component of dimension 1.
+    Is it prime? True.
+    It is generated by [y - 2, x - z].
+    Is red a unit in the quotient? 0
+    </code></pre>
+          
+          <p>
+            Since these components are defined over the field $\mathbb{Q}$, we know that the coordinates $(x,y,z)$ define a unique representation up to conjugation. Hence, after this calculation we conclude that $M(\langle a,b\vert a^2ba^{-2}b^{-2}\rangle,\mathrm{SL}_2)$ over $\mathbb{Q}$ has a 1-dim'l irreducible component of reducible representations, corresponding to the curve $(t,2,t)$; and a 0-dim'l irreducible component with just two points corresponding to two irreps. with traces $y=-1$, $x = \mp \sqrt{2}$ and $z=\pm\frac{\sqrt{2}}{2}$.
+          </p>
+
+          <span>
+            This proves Breuillard's claim that this group is not of geometric origin: the group does not have integral irreps. so it is not weakly integral.
+          </span>
+        </div>
+      </details>
+    </details>
+
+    <hr>
+    <!--Section 3-->
+    <details class="ToCDetails">
+      <summary class="ToCDetails">
+        <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            3. The groups $\Gamma_{\ell^k}$
+        </div>
+      </summary>
+      <div style="text-align: justify; text-indent: 5px">
+        <span>
+          One of the main results in the paper is:
+        </span>
+
+        <p>
+          <aside id="info-block">
+            <section class="file-marker">
+              <div style="text-align: justify">
+                <div class="box-title">
+                  <strong>Theorem.</strong> [<a href="#CG24">CG24</a>, Theorem 1]
+                </div>
+                <div class="box-contents" style="text-align: left; padding: 10px;">
+                  Let \[\Gamma_{\ell^k} := \langle a,b \vert a^{\ell^k(\ell^k-1)ba^{-\ell^k}b^{-2}}\rangle\] for $\ell$ a positive prime and $k$ a positive integer. Then $\Gamma_{\ell^k}$ is not weakly integral for $(2,1)$ over the prime $\ell$.
+                </div>
+              </div>
+            </section>
+          </aside>
+        </p>
+
+        <p>
+          Some remarks:
+        </p>
+
+        <ol>
+          <li>
+            For $\ell^k=2$ we recover Breuillard's example.
+          </li>
+          <li>
+            The actual statement of the theorem in the paper contains much more information about the variety $M^{\texttt{gen.irr}}(\Gamma_{\ell^k},\mathrm{SL}_2)$. The statement here is just a corollary.
+          </li>
+        </ol>
+      </div>
+      <!--Subsection 3.1-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            3.1. Some examples with SageMath
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            Before reviewing some parts of the proof, we reproduce some computations to illustrate the theorem. Keep the code lines from 1 to 19. For $\ell^k = 4$ do:
+          </span>
+
+          <pre><code class="language-python" data-ln-start-from="20">l, k = 2, 2
+n = l^k
+w = a^(n*(n-1)) * b * (x-a)^n * (y-b)^2
+I = PolynomialRing(QQ,'x, y, z',order='lex').ideal(T(w - 1),
+                                                   T(a * (w - 1)),
+                                                   T(b * (w - 1)),
+                                                   T(a*b * (w - 1)))</code></pre>
+          <pre><code class="language-python nohljsln">sage: for P in I.primary_decomposition():
+         print(f'Primary component of dimension {P.dimension()}.')
+         print(f'  Is it prime? {P.is_prime()}.')
+         print(f'  It is generated by {P.gens()}.')
+         print(f'  Is red a unit in the quotient? {redQ.reduce(P)}')
+         print()
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [8*z^8 - 32*z^6 + 40*z^4 - 16*z^2 + 1, y + 1, x - 8*z^7 + 28*z^5 - 28*z^3 + 8*z].
+    Is red a unit in the quotient? x^2 + x*z + z^2 - 3
+
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [8*z^4 - 8*z^2 + 1, y - 1, x - 2*z].
+    Is red a unit in the quotient? 3*z^2 - 3
+
+  Primary component of dimension 1.
+    Is it prime? True.
+    It is generated by [y^9 - 9*y^7 + 27*y^5 - 30*y^3 + 9*y - z^8 + 8*z^6 - 20*z^4 + 16*z^2 - 2, x*z^7 - 6*x*z^5 + 10*x*z^3 - 4*x*z - y^8 + 8*y^6 - 20*y^4 + 16*y^2 - y*z^6 + 5*y*z^4 - 6*y*z^2 + y - 2, x*y^4 - x*y^3*z^6 + 5*x*y^3*z^4 - 6*x*y^3*z^2 + x*y^3 - 3*x*y^2 + 2*x*y*z^6 - 10*x*y*z^4 + 12*x*y*z^2 - 2*x*y + x + y^4*z^5 - 4*y^4*z^3 + 3*y^4*z - y^3*z + y^2*z^7 - 9*y^2*z^5 + 22*y^2*z^3 - 13*y^2*z + 2*y*z - z^7 + 7*z^5 - 14*z^3 + 7*z, x^2 - x*y*z + y^2 + z^2 - 4].
+    Is red a unit in the quotient? 0</code></pre>
+        
+          <p>
+            Observe that Newton polygon of the polynomial $8z^8 - 32z^6 + 40z^4 - 16z^2 + 1$ with respect to 2-valuation has a single slope $3/8$ with multiplicity $8$. This implies that all the traces $z$ are not integral. It can be checked (repeat the previous computation but use the lexicographic order with $y>z>x$) that $x$ is integral.
+          </p>
+
+          <p>
+            Similarly, the Newton polygon of the polynomial $8z^4 - 8z^2 + 1$ with respect to the 2-valuation has a single slope $3/4$. As before, it can be checked that $x$ is integral.
+          </p>
+
+          <p>
+            Finally, the points in the 1-dim'l component correspond to reducible representations. This proves that this group is not of geometric origin using de Jong&mdash;Esnault obstruction.
+          </p>
+
+          <p>
+            For $\ell^k=3$, use again lines 1-19 and do:
+          </p>
+
+          <pre><code class="language-python" data-ln-start-from="20">l, k = 3, 1
+n = l^k
+w = a^(n*(n-1)) * b * (x-a)^n * (y-b)^2
+I = PolynomialRing(QQ,'x, y, z',order='lex').ideal(T(w - 1),
+                                                   T(a * (w - 1)),
+                                                   T(b * (w - 1)),
+                                                   T(a*b * (w - 1)))</code></pre>
+          <pre><code class="language-python nohljsln">sage: for P in I.primary_decomposition():
+         print(f'Primary component of dimension {P.dimension()}.')
+         print(f'  Is it prime? {P.is_prime()}.')
+         print(f'  It is generated by {P.gens()}.')
+         print(f'  Is red a unit in the quotient? {redQ.reduce(P)}')
+         print()
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [3*z^3 - 3*z + 1, y + 1, x - 3*z^2 + 2].
+    Is red a unit in the quotient? x^2 + x*z + 1/3*x - 7/3
+
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [3*z^3 - 3*z + 1, y - 1, x + 3*z^2 - 2].
+    Is red a unit in the quotient? x^2 - x*z - 1/3*x - 7/3
+
+  Primary component of dimension 1.
+    Is it prime? True.
+    It is generated by [y^4 - 4*y^2 - z^3 + 3*z + 2, x*z^2 - x - y^3 - y*z + 3*y, x*y*z - x*y - y^2 - z^2 + z + 2, x*y^2 - x*z - x - y*z + y, x^2 - x*y + z - 2].
+    Is red a unit in the quotient? 0</code></pre>
+
+          <p>
+            As before, it follows that $\Gamma_3$ is not weakly integral.
+          </p>
+
+          <p>
+            Similarly, for $\ell^k=5$:
+          </p>
+
+          <pre><code class="language-python" data-ln-start-from="20">l, k = 5, 1
+n = l^k
+w = a^(n*(n-1)) * b * (x-a)^n * (y-b)^2
+I=PolynomialRing(QQ,'x, y, z',order='degrevlex(2),lex(1)').ideal(T(w - 1),
+                                                                 T(a * (w - 1)),
+                                                                 T(b * (w - 1)),
+                                                                 T(a*b * (w - 1)))</code></pre>
+          <pre><code class="language-python nohljsln">sage: for P in I.primary_decomposition():
+         print(f'Primary component of dimension {P.dimension()}.')
+         print(f'  Is it prime? {P.is_prime()}.')
+         print(f'  It is generated by {P.gens()}.')
+         print(f'  Is red a unit in the quotient? {redQ.reduce(P)}')
+         print()
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [25*z^10 - 125*z^8 + 200*z^6 - 15*z^5 - 125*z^4 + 25*z^3 + 25*z^2 - 10*z + 1, y + 1, x - 25*z^9 + 120*z^7 - 180*z^5 + 15*z^4 + 105*z^3 - 21*z^2 - 20*z + 6].
+    Is red a unit in the quotient? x^2 + x*z + z^2 - 3
+
+  Primary component of dimension 0.
+    Is it prime? True.
+    It is generated by [25*z^10 - 125*z^8 + 200*z^6 - 15*z^5 - 125*z^4 + 25*z^3 + 25*z^2 - 10*z + 1, y - 1, x + 25*z^9 - 120*z^7 + 180*z^5 - 15*z^4 - 105*z^3 + 21*z^2 + 20*z - 6].
+    Is red a unit in the quotient? x^2 - x*z + z^2 - 3
+
+  Primary component of dimension 1.
+    Is it prime? True.
+    It is generated by [x^2 - x*y*z + y^2 + z^2 - 4, x*y^7*z^7 - x*y^7*z^6 - 6*x*y^7*z^5 + 5*x*y^7*z^4 + 10*x*y^7*z^3 - 6*x*y^7*z^2 - 4*x*y^7*z + x*y^7 - y^8*z^6 + y^8*z^5 + 5*y^8*z^4 - 4*y^8*z^3 - 6*y^8*z^2 + 3*y^8*z + y^8 - 6*x*y^5*z^7 + 6*x*y^5*z^6 + 36*x*y^5*z^5 - 30*x*y^5*z^4 - 60*x*y^5*z^3 + 36*x*y^5*z^2 + 24*x*y^5*z - 6*x*y^5 - y^6*z^8 + y^6*z^7 + 14*y^6*z^6 - 13*y^6*z^5 - 50*y^6*z^4 + 38*y^6*z^3 + 52*y^6*z^2 - 25*y^6*z - 8*y^6 + 10*x*y^3*z^7 - 10*x*y^3*z^6 - 60*x*y^3*z^5 + 50*x*y^3*z^4 + 100*x*y^3*z^3 - 60*x*y^3*z^2 - 40*x*y^3*z + 10*x*y^3 + 5*y^4*z^8 - 5*y^4*z^7 - 50*y^4*z^6 + 45*y^4*z^5 + 150*y^4*z^4 - 110*y^4*z^3 - 140*y^4*z^2 + 65*y^4*z + 20*y^4 - 4*x*y*z^7 + 4*x*y*z^6 + 24*x*y*z^5 - 20*x*y*z^4 - 40*x*y*z^3 + 24*x*y*z^2 + 16*x*y*z - 4*x*y - 6*y^2*z^8 + 6*y^2*z^7 + 52*y^2*z^6 - 46*y^2*z^5 - 140*y^2*z^4 + 100*y^2*z^3 + 120*y^2*z^2 - 54*y^2*z - 16*y^2 + z^8 - z^7 - 8*z^6 + 7*z^5 + 20*z^4 - 14*z^3 - 16*z^2 + 7*z + 2, y^9 - x*y^6*z^14 + 13*x*y^6*z^12 - 66*x*y^6*z^10 + 165*x*y^6*z^8 - 210*x*y^6*z^6 + 126*x*y^6*z^4 - 28*x*y^6*z^2 + x*y^6 + y^7*z^13 - 12*y^7*z^11 + 55*y^7*z^9 - 120*y^7*z^7 + 126*y^7*z^5 - 56*y^7*z^3 + 7*y^7*z - 9*y^7 + 5*x*y^4*z^14 - 65*x*y^4*z^12 + 330*x*y^4*z^10 - 825*x*y^4*z^8 + 1050*x*y^4*z^6 - 630*x*y^4*z^4 + 140*x*y^4*z^2 - 5*x*y^4 + y^5*z^15 - 20*y^5*z^13 + 150*y^5*z^11 - 550*y^5*z^9 + 1050*y^5*z^7 - 1008*y^5*z^5 + 420*y^5*z^3 - 50*y^5*z + 27*y^5 - 6*x*y^2*z^14 + 78*x*y^2*z^12 - 396*x*y^2*z^10 + 990*x*y^2*z^8 - 1260*x*y^2*z^6 + 756*x*y^2*z^4 - 168*x*y^2*z^2 + 6*x*y^2 - 4*y^3*z^15 + 66*y^3*z^13 - 432*y^3*z^11 + 1430*y^3*z^9 - 2520*y^3*z^7 + 2268*y^3*z^5 - 896*y^3*z^3 + 102*y^3*z - 30*y^3 + x*z^14 - 13*x*z^12 + 66*x*z^10 - 165*x*z^8 + 210*x*z^6 - 126*x*z^4 + 28*x*z^2 - x + 3*y*z^15 - 46*y*z^13 + 282*y*z^11 - 880*y*z^9 + 1470*y*z^7 - 1260*y*z^5 + 476*y*z^3 - 52*y*z + 9*y, x*y^8 - x*y^6*z^13 + 12*x*y^6*z^11 - 55*x*y^6*z^9 + 120*x*y^6*z^7 - 126*x*y^6*z^5 + 56*x*y^6*z^3 - 7*x*y^6*z - 7*x*y^6 + y^7*z^12 - 11*y^7*z^10 + 45*y^7*z^8 - 84*y^7*z^6 + 70*y^7*z^4 - 21*y^7*z^2 - y^7*z + y^7 + 5*x*y^4*z^13 - 60*x*y^4*z^11 + 275*x*y^4*z^9 - 600*x*y^4*z^7 + 630*x*y^4*z^5 - 280*x*y^4*z^3 + 35*x*y^4*z + 15*x*y^4 + y^5*z^14 - 19*y^5*z^12 + 132*y^5*z^10 - 435*y^5*z^8 + 714*y^5*z^6 - 546*y^5*z^4 + 154*y^5*z^2 + 6*y^5*z - 7*y^5 - 6*x*y^2*z^13 + 72*x*y^2*z^11 - 330*x*y^2*z^9 + 720*x*y^2*z^7 - 756*x*y^2*z^5 + 336*x*y^2*z^3 - 42*x*y^2*z - 10*x*y^2 - 4*y^3*z^14 + 62*y^3*z^12 - 374*y^3*z^10 + 1110*y^3*z^8 - 1680*y^3*z^6 + 1204*y^3*z^4 - 322*y^3*z^2 - 10*y^3*z + 14*y^3 + x*z^13 - 12*x*z^11 + 55*x*z^9 - 120*x*z^7 + 126*x*z^5 - 56*x*z^3 + 7*x*z + x + 3*y*z^14 - 43*y*z^12 + 242*y*z^10 - 675*y*z^8 + 966*y*z^6 - 658*y*z^4 + 168*y*z^2 + 4*y*z - 7*y].
+    Is red a unit in the quotient? 0</code></pre>
+
+          <span>
+            Observe that we have used a different term order. This calculation for $\ell^k>5$ seems not achievable.
+          </span>
+        </div>
+      </details>
+      <!--Subsection 3.2-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            3.2. Sketch of the proof
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            We briefly review some ideas only for $k=1$ and odd $\ell$. Here, $x,y,z$ should always be thought as the actual traces of a representation $\rho$, at least whenever we work with them like variables over a field.
+          </span>
+
+          <p>
+            As we saw, after writing $\omega_\ell:= a^{\ell(\ell-1)}ba^{-\ell}b^{-2}$ with respect to the basis $\{1,a,b,ab\}$ we directly obtain equations cutting out irreps. by comparing with the element $1$. This is equivalent to compare the coordinates of the words $a^{\ell(\ell-1)}b$ and $b^2a^\ell$. We have the following: \[a^{\ell(\ell-1)}b = (d_{\ell(\ell-1)}(x)+c_{\ell(\ell-1)}(x)a)\cdot b = d_{\ell(\ell-1)}(x)b+c_{\ell(\ell-1)}(x)ab;\] \[\begin{aligned}b^2a^\ell &= (-1+yb)\cdot(d_\ell(x)+c_\ell(x)a)\\ &= y(z-xy)c_\ell(x)-d_\ell(x)\\ &\qquad+ (y^2-1)c_\ell(x)a\\ &\qquad+ y(xc_\ell(x)+d_\ell(x))b\\ &\qquad- yc_\ell(x) ab.\end{aligned}\] Obtain the following system of equations: \[\begin{aligned}y(z-xy)c_\ell(x)-d_\ell(x)&=0,\\ (y^2-1)c_\ell(x) &= 0,\\ d_{\ell(\ell-1)}(x) &= yc_{\ell+1}(x) = yd_{-\ell}(x),\\ c_{\ell(\ell-1)}(x) &= -yc_\ell(x) = yc_{-\ell}(x).\end{aligned}\] Since $c_\ell(x),d_\ell(x)$ do not vanish simultaneously, the first two equations imply that $c_\ell(x)\neq0$, $y^2-1=0$ and $z-yc_{\ell+1}(x)=0$.
+          </p>
+
+          <p>
+            From the last pair of equations we get the following: The equality between polynomials is equivalent to \[a^{\ell(\ell-1)} = d_{\ell(\ell-1)}(x)+c_{\ell(\ell-1)}(x)a = y (d_{-\ell}(x) + c_{-\ell}(x)a) = y a^{-\ell}.\] It follows that $a^{\ell^2} = y$ and $a^{2\ell^2}=1$. In particular $a$ has finite order, hence for every irrep. $\rho$, $\rho(a)$ has finite order and is diagonalizable.
+          </p>
+
+          <p>
+            To determine the exact order of $\rho(a)$ we proceed as follows: First observe that the only SL<sub>2</sub>-matrices of order $2$ are $\pm I$. Write $A:=\rho(a)$. We know $A\neq\pm I$ because $\rho$ is assumed to be irreducible. This implies $A^2 \neq I$. Moreover, $A^\ell = d_\ell(x) + c_\ell(x)A$ and $c_\ell(x)\neq0$. This implies that $A^\ell\neq\pm I$. In particular, $A^{2\ell}\neq I$. Finally, if $y+1=0$, then $A^{\ell^2}=-I$ so $A$ has order exactly $2\ell^2$. If $y-1=0$ then already $A^{\ell^2}=1$ and $A$ has order $\ell^2$.
+          </p>
+
+          <p>
+            This implies that $A$ is diagonalizable, with eigenvalues $\ell^2$-th root of unity if $y-1=0$ or eigenvalues $2\ell^2$-th roots of unity if $y+1=0$. From now on we assume $y-1=0$, the other case being identical. Therefore \[x = \zeta_{\ell^2}^j + \zeta_{\ell^2}^{-j}\] for some $j\in\{0,\dots,\ell^2-1\}$ prime to $\ell$ and $\zeta_{\ell^2}=\mathrm{exp}(2\pi i/\ell^2)$.
+          </p>
+
+          <p>
+            Then, $z = c_{\ell+1}(x)$ can be expressed as \[z=\frac{1}{\zeta_{\ell^2}^j}\frac{1-\zeta_{\ell^2}^{2j(\ell^2+1)}}{1-\zeta_{\ell^2}^{2j}}.\] Using well known formulas for the valuation of cyclotomic numbers, it follows that $z$ is $\ell'$-integral if and only if $\ell'\neq\ell$, and its $\ell$-adic valuation is $-\frac{1}{\ell}$.
+          </p>
+
+          <p>
+            Moreover, we saw that both $x$ and $y$ are integral. So non-integrality occurs only for $z$. This fact is used to prove that any of the points $(x,y,z)$ we found satisfy the equation $\mathsf{red}=0$, otherwise $z$ would be an algebraic integer. This justifies why we didn't have to struggle with $\mathsf{red}$, and just use that $\{1,a,b,ab\}$ is a basis.
+          </p>
+
+          <p>
+            Finally observe that $\Gamma_\ell$ has $\ell(\ell-1)$ non-conjugated irreps. Half of them with $\mathrm{tr}\ \rho(b)=1$ and the other half with $\mathrm{tr}\ \rho(b)=-1$.
+          </p>
+
+          <span>
+            The proof for arbitrary $\ell$, $k$ is along these lines. A feature of the proof is that it treats all the cases uniformly.
+          </span>
+        </div>
+      </details>
+    </details>
+
+    <hr>
+    <!--Section 4-->
+    <details class="ToCDetails">
+      <summary class="ToCDetails">
+        <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            4. Results for a general relation $a^{n_1}b^{m_1}a^{n_2}b^{m_2}$
+        </div>
+      </summary>
+      <div style="text-align: justify; text-indent: 5px">
+        <span>
+          We have been working with quite concrete words $\omega_{\ell^k}(a,b)$. The purpose of this section is to use the previous ideas and methods to extract as much information as possible for a general 2-generated 1-relator group of the form $\pi=\langle a,b \vert a^{n_1}b^{m_1}a^{n_2}b^{m_2}\rangle$.
+        </span>
+
+        <p>
+          The idea is the following: Write $a^{n_1}b^{m_1}a^{n_2}b^{m_2}$ as $c_1 + c_a a + c_b b + c_{ab} ab$, for some $c_g \in \mathbb{Z}[x,y,z]$. Note that the powers $a^{n_i}$ (resp. $b^{m_i}$) can be written in terms of $\{1,a\}$ (resp. $\{1,b\}$) using the polynomials $c_{n_i}(x),d_{n_i}(x)$ (resp. $c_{m_i}(y),d_{m_i}(y)$).
+        </p>
+
+        <p>
+          Therefore, we can write $c_g$ as a polynomial in terms of $x,y,z$ and $c_{n_i},d_{n_i},c_{m_i},d_{m_i}$. After finding these expressions, we study the ideal $V(c_1-1,c_a,c_b,c_{ab})$ which contains the SL<sub>2</sub>-irreps. as the open subset $\mathrm{D}(\mathsf{red})$. The surprise is that, if we treat the polynomials $c_{\ast_i},d_{\ast_i}$ for $\ast\in\{n,m\}$ as independent polynomial variables $\gamma_{\ast_i},\delta_{\ast_i}$, then these equations impose certain universal conditions on $\gamma$'s and $\delta$'s.
+        </p>
+
+        <p>
+          More precisely, consider the following ring \[R=\mathbb{Z}[x,y,z][\gamma_{n_1},\delta_{n_1},\gamma_{m_1},\delta_{m_1},\gamma_{n_2},\delta_{n_2},\gamma_{m_2},\delta_{m_2}].\] With these new variables, we think of $a^{n_i}$ (resp. $b^{m_i}$) as the expression $\delta_{n_i}+\gamma_{n_i}a$ (resp. $\delta_{m_i}+\gamma_{m_i}b$). In fact, since $c_{n_i}(x)^2+xc_{n_1}(x)d_{n_1}(x)+d_{n_1}(x)^2-1=0$, these variables are not algebraically independent and we will impose the determinant conditions $\gamma_{n_i}^2 + x\gamma_{n_i}\delta_{n_i}+\delta_{n_i}^2-1$ and $\gamma_{m_i}^2 + x\gamma_{m_i}\delta_{m_i}+\delta_{m_i}^2-1$.
+        </p>
+
+        <p>
+          In order to simplify the defining equations, we present the relation $a^{n_1}b^{m_1}a^{n_2}b^{m_2}=1$ in a more symmetrical way: \[a^{n_2}b^{m_2}=b^{-m_1}a^{-n_1}.\] This requires us to express $a^{-n_1}$ (resp. $b^{-m_1}$) in terms of the variables $\gamma_{n_1},\delta_{n_1}$ (resp. $\gamma_{m_1},\delta_{m_1}$). But note that $c_{-n}(t)=-c_n(t)$ and $d_{-n}(t)=c_{n+1}(t)=tc_{n}(t)+d_{n}(t)$; hence we think of $a^{-n_1}$ as the algebra element $(x\gamma_{n_1}+\delta_{n_1})\cdot 1 - \gamma_{n_1}\cdot a$ and similarly for $b^{-m_1}$.
+        </p>
+
+        <p>
+          We compare component-wise the expressions \[\begin{aligned}\omega_l :&= (\delta_{n_2}+\gamma_{n_2}a)\cdot(\delta_{m_2}+\gamma_{m_2}b)\\ &= \delta_{n_2}\delta_{m_2} + \gamma_{n_2}\delta_{m_2}\cdot a+ \delta_{n_2}\gamma_{m_2}\cdot b + \gamma_{n_2}\gamma_{m_2}\cdot ab;\\ \omega_r :&= (y\gamma_{m_1}+\delta_{m_1}-\gamma_{m_1}b)\cdot(x\gamma_{n_1}+\delta_{n_1}-\gamma_{n_1}a)\\ &= x\gamma_{n_1}\delta_{m_1} + y\delta_{n_1}\gamma_{m_1} + z\gamma_{n_1}\gamma_{m_1} + \delta_{n_1}\delta_{m_1}\\ &\qquad-\gamma_{n_1}\delta_{m_1}\cdot a-\delta_{n_1}\gamma_{m_1}\cdot b-\gamma_{n_1}\gamma_{m_1}\cdot ab.\end{aligned}\]
+        </p>
+
+        <span>
+          To summarize, in order to find universal relations we study the ideal \[\begin{aligned}I:=(&x\gamma_{n_1}\delta_{m_1} + y\delta_{n_1}\gamma_{m_1} + z\gamma_{n_1}\gamma_{m_1} + \delta_{n_1}\delta_{m_1}-\delta_{n_2}\delta_{m_2},\\ &\gamma_{n_1}\delta_{m_1}+\gamma_{n_2}\delta_{m_2},\\ &\delta_{n_1}\gamma_{m_1}+\delta_{n_2}\gamma_{m_2},\\ &\gamma_{n_1}\gamma_{m_1}+\gamma_{n_2}\gamma_{m_2},\\ &\gamma_{n_i}^2 + x\gamma_{n_i}\delta_{n_i}+\delta_{n_i}^2-1\text{ for }i=1,2,\\ &\gamma_{m_i}^2 + x\gamma_{m_i}\delta_{m_i}+\delta_{m_i}^2-1\text{ for }i=1,2).\end{aligned}\]
+        </span>
+      </div>
+      <!--Subsection 4.1-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            4.1. Universal relations
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            Start a new SageCell session with:
+          </span>
+
+          <pre><code class="language-python"  data-ln-start-from="1"># The Cayley--Hamilton algebra of F₂ over &rationals;
+BaseRing.&lt;z,cn1,dn1,cm1,dm1,cn2,dn2,cm2,dm2,x,y&gt; = PolynomialRing(QQ,11,order='lex')
+Alg = FreeAlgebra(BaseRing,2)
+Mon = Alg.monoid()
+a, b = Mon.gens()
+mons = [Mon(1), a, b, a*b]
+M = MatrixSpace(BaseRing,4) # Matrices for the algebra
+mats = [M([0,1,0,0, -1,x,0,0, z-x*y,y,x,-1, -y,z,1,0]),
+        M([0,0,1,0, 0,0,0,1, -1,0,y,0, 0,-1,0,y])]
+H.&lt;a,b&gt; = Alg.quotient(mons, mats)
+wr = (dn2+cn2*a)*(dm2+cm2*b)
+wl = (y*cm1+dm1-cm1*b)*(x*cn1+dn1-cn1*a)</code></pre>
+        
+          <p>
+            Observe that we defined the Cayley&mdash;Hamilton algebra of $F_2$ over $\mathbb{Q}$ instead of $\mathbb{Z}$. This is in order to be able to use SageMath methods to study the ideal $I$. Moreover, we use a very specific ordering of the variables to improve performance.
+          </p>
+
+          <p>
+            As we already know, we obtain:
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: wr
+  dn2*dm2 + cn2*dm2*a + dn2*cm2*b + cn2*cm2*a*b</code></pre><pre><code class="language-python nohljsln">sage: wl
+  (cn1*cm1*z+cn1*dm1*x+dn1*cm1*y+dn1*dm1) - cn1*dm1*a - dn1*cm1*b - cn1*cm1*a*b</code></pre>
+
+          <p>
+            Now define $I$, check that the ideal is radical and compute its primary components, checking they are actually prime ideals, and henceforth the decomposition corresponds to the minimal decomposition into irreducibles of the corresponding scheme:
+          </p>
+
+          <pre><code class="language-python"  data-ln-start-from="13">I = BaseRing.ideal(wr.vector()[0]-wl.vector()[0],
+                 wr.vector()[1]-wl.vector()[1],
+                 wr.vector()[2]-wl.vector()[2],
+                 wr.vector()[3]-wl.vector()[3],
+                 cn1^2+x*cn1*dn1+dn1^2-1,
+                 cn2^2+x*cn2*dn2+dn2^2-1,
+                 cm1^2+y*cm1*dm1+dm1^2-1,
+                 cm2^2+y*cm2*dm2+dm2^2-1)</code></pre>
+
+          <pre><code class="language-python nohljsln">sage: I.radical()==I
+  True</code></pre>
+
+          <pre><code class="language-python nohljsln">sage: for P in I.primary_decomposition():
+         print('Primary component generated by:')
+         for g in P.gens():
+             print(f'    {g}')
+         print(f'  Is it prime? {P.is_prime()}')
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 - dm2
+      cm1 - cm2
+      dn1 + dn2
+      cn1 + cn2
+      z*dn2^2*dm2^2 - z*dn2^2 - z*dm2^2 + z + 2*cn2*dn2*cm2*dm2 + cn2*dn2*dm2^2*y + cn2*dn2*y + dn2^2*cm2*dm2*x + dn2^2*x*y + cm2*dm2*x + dm2^2*x*y
+      z*dn2^2*cm2 - z*cm2 - cn2*dn2*cm2*y - 2*cn2*dn2*dm2 - dn2^2*cm2*x*y - dn2^2*dm2*x - dm2*x
+      z*cn2*dm2^2 - z*cn2 - cn2*cm2*dm2*x - cn2*dm2^2*x*y - 2*dn2*cm2*dm2 - dn2*dm2^2*y - dn2*y
+      z*cn2*cm2 + cn2*dm2*x + dn2*cm2*y + 2*dn2*dm2
+    Is it prime? True
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 + dm2
+      cm1 + cm2
+      dn1 - dn2
+      cn1 - cn2
+      z*dn2^2*dm2^2 - z*dn2^2 - z*dm2^2 + z + 2*cn2*dn2*cm2*dm2 + cn2*dn2*dm2^2*y + cn2*dn2*y + dn2^2*cm2*dm2*x + dn2^2*x*y + cm2*dm2*x + dm2^2*x*y
+      z*dn2^2*cm2 - z*cm2 - cn2*dn2*cm2*y - 2*cn2*dn2*dm2 - dn2^2*cm2*x*y - dn2^2*dm2*x - dm2*x
+      z*cn2*dm2^2 - z*cn2 - cn2*cm2*dm2*x - cn2*dm2^2*x*y - 2*dn2*cm2*dm2 - dn2*dm2^2*y - dn2*y
+      z*cn2*cm2 + cn2*dm2*x + dn2*cm2*y + 2*dn2*dm2
+    Is it prime? True
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      dn2 + 1
+      cn2
+      dm1 - cm2*y - dm2
+      cm1 + cm2
+      dn1 + 1
+      cn1
+    Is it prime? True
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      dn2 - 1
+      cn2
+      dm1 + cm2*y + dm2
+      cm1 - cm2
+      dn1 + 1
+      cn1
+    Is it prime? True
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      dn2 + 1
+      cn2
+      dm1 + cm2*y + dm2
+      cm1 - cm2
+      dn1 - 1
+      cn1
+    Is it prime? True
+  Primary component generated by:
+      cm2^2 + cm2*dm2*y + dm2^2 - 1
+      dn2 - 1
+      cn2
+      dm1 - cm2*y - dm2
+      cm1 + cm2
+      dn1 - 1
+      cn1
+    Is it prime? True
+  Primary component generated by:
+      dm2 + 1
+      cm2
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 + 1
+      cm1
+      dn1 - cn2*x - dn2
+      cn1 + cn2
+    Is it prime? True
+  Primary component generated by:
+      dm2 - 1
+      cm2
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 + 1
+      cm1
+      dn1 + cn2*x + dn2
+      cn1 - cn2
+    Is it prime? True
+  Primary component generated by:
+      dm2 - 1
+      cm2
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 - 1
+      cm1
+      dn1 - cn2*x - dn2
+      cn1 + cn2
+    Is it prime? True
+  Primary component generated by:
+      dm2 + 1
+      cm2
+      cn2^2 + cn2*dn2*x + dn2^2 - 1
+      dm1 - 1
+      cm1
+      dn1 + cn2*x + dn2
+      cn1 - cn2
+    Is it prime? True</code></pre>
+
+          <p>
+            The sets of generators for the first two printed irreducible components are not minimal. For example:
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: P = BaseRing.ideal(cm2^2 + cm2*dm2*y + dm2^2 - 1,
+                      cn2^2 + cn2*dn2*x + dn2^2 - 1,
+                      dm1 - dm2,
+                      cm1 - cm2,
+                      dn1 + dn2,
+                      cn1 + cn2,
+                      z*cn2*cm2 + cn2*dm2*x + dn2*cm2*y + 2*dn2*dm2)
+  Ideal (cm2^2 + cm2*dm2*y + dm2^2 - 1, cn2^2 + cn2*dn2*x + dn2^2 - 1, dm1 - dm2, cm1 - cm2, dn1 + dn2, cn1 + cn2, z*cn2*cm2 + cn2*dm2*x + dn2*cm2*y + 2*dn2*dm2) of Multivariate Polynomial Ring in z, cn1, dn1, cm1, dm1, cn2, dn2, cm2, dm2, x, y over Rational Field</code></pre>
+  
+          <p>
+            Now check that the three generators we left out are in this ideal $P$:
+          </p>
+
+          <pre><code class="language-python nohljsln">sage: z*dn2^2*dm2^2 - z*dn2^2 - z*dm2^2 + z + 2*cn2*dn2*cm2*dm2 + cn2*dn2*dm2^2*y + cn2*dn2*y + dn2^2*cm2*dm2*x + dn2^2*x*y + cm2*dm2*x + dm2^2*x*y in P
+  True</code></pre><pre><code class="language-python nohljsln">sage: z*dn2^2*cm2 - z*cm2 - cn2*dn2*cm2*y - 2*cn2*dn2*dm2 - dn2^2*cm2*x*y - dn2^2*dm2*x - dm2*x in P
+  True</code></pre><pre><code class="language-python nohljsln">sage: z*cn2*dm2^2 - z*cn2 - cn2*cm2*dm2*x - cn2*dm2^2*x*y - 2*dn2*cm2*dm2 - dn2*dm2^2*y - dn2*y in P
+  True</code></pre>
+
+          <p>
+            The following graph summarizes all this information and the relative position of the irreducible components: each node correspond to one of the prime ideals we just found, and an edge indicates the corresponding sum is proper. The graph is interactive, just place the mouse on top of a node or an edge to see the generators of the corresponding ideal:
+          </p>
+
+          <div id="graph-container" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 20px 0;">
+            <div style="border: 1px solid gray; display: inline-block; padding: 0; position: relative;">
+              <svg id="graph-svg" xmlns="http://www.w3.org/2000/svg" width="540" height="380" viewBox="0 0 400 380">
+                <style>
+                  .surr-edge { stroke: white; stroke-width: 9; stroke-linecap: round; cursor: pointer; }
+                  .edge { stroke: black; stroke-width: 3; stroke-linecap: round; cursor: pointer; }
+                  .node-circle { fill: white; stroke: black; stroke-width: 3; cursor: pointer; }
+                  .node-label { font-size: 18px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+                </style>
+
+                <!-- Edges -->
+                <g id="edges">
+                  <line class="edge" data-from="0" data-to="1"/>
+                  <line class="edge" data-from="0" data-to="2"/>
+                  <line class="edge" data-from="0" data-to="3"/>
+                  <line class="edge" data-from="0" data-to="4"/>
+                  <line class="edge" data-from="9" data-to="5"/>
+                  <line class="edge" data-from="9" data-to="6"/>
+                  <line class="edge" data-from="9" data-to="7"/>
+                  <line class="edge" data-from="9" data-to="8"/>
+                  <line class="edge" data-from="1" data-to="5"/>
+                  <line class="edge" data-from="1" data-to="6"/>
+                  <line class="surr-edge" data-from="2" data-to="5"/>
+                  <line class="edge" data-from="2" data-to="5"/>
+                  <line class="edge" data-from="2" data-to="6"/>
+                  <line class="edge" data-from="3" data-to="7"/>
+                  <line class="edge" data-from="3" data-to="8"/>
+                  <line class="surr-edge" data-from="4" data-to="7"/>
+                  <line class="edge" data-from="4" data-to="7"/>
+                  <line class="edge" data-from="4" data-to="8"/>
+                </g>
+
+                <!-- Nodes -->
+                <g id="nodes">
+                  <circle class="node-circle" data-index="0" cx="10" cy="190" r="20"/>
+                  <circle class="node-circle" data-index="1" cx="120" cy="60" r="20"/>
+                  <circle class="node-circle" data-index="2" cx="120" cy="140" r="20"/>
+                  <circle class="node-circle" data-index="3" cx="120" cy="240" r="20"/>
+                  <circle class="node-circle" data-index="4" cx="120" cy="320" r="20"/>
+                  <circle class="node-circle" data-index="5" cx="270" cy="60" r="20"/>
+                  <circle class="node-circle" data-index="6" cx="270" cy="140" r="20"/>
+                  <circle class="node-circle" data-index="7" cx="270" cy="240" r="20"/>
+                  <circle class="node-circle" data-index="8" cx="270" cy="320" r="20"/>
+                  <circle class="node-circle" data-index="9" cx="380" cy="190" r="20"/>
+                </g>
+
+                <!-- Labels -->
+                <g id="labels">
+                  <text class="node-label" id="label-0" x="40" y="190">&wp;&#x2081;&#x2080;</text>
+                  <text class="node-label" id="label-1" x="150" y="60">&wp;&#x2081;</text>
+                  <text class="node-label" id="label-2" x="150" y="140">&wp;&#x2083;</text>
+                  <text class="node-label" id="label-3" x="150" y="240">&wp;&#x2086;</text>
+                  <text class="node-label" id="label-4" x="150" y="320">&wp;&#x2088;</text>
+                  <text class="node-label" id="label-5" x="300" y="60">&wp;&#x2085;</text>
+                  <text class="node-label" id="label-6" x="300" y="140">&wp;&#x2087;</text>
+                  <text class="node-label" id="label-7" x="300" y="240">&wp;&#x2082;</text>
+                  <text class="node-label" id="label-8" x="300" y="320">&wp;&#x2084;</text>
+                  <text class="node-label" id="label-9" x="440" y="190">&wp;&#x2089;</text>
+                </g>
+              </svg>
+
+              <!-- Popups nodos -->
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}-\gamma_{n_2}$,
+                $\delta_{n_1}-\delta_{n_2}$,<br>
+                $\gamma_{m_1}+\gamma_{m_2}$,
+                $\delta_{m_1}+\delta_{m_2}$,<br>
+                $z\gamma_{n_1}\gamma_{m_1}+x\gamma_{n_1}\delta_{m_1}$<br>
+                $\quad+y\delta_{n_1}\gamma_{m_1}+2\delta_{n_1}\delta_{m_1}$,<br>
+                $\gamma_{n_1}^2 + x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}+\gamma_{m_2}$, $y\gamma_{m_1}+\delta_{m_1}-\delta_{m_2}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}+\gamma_{m_2}$, $y\gamma_{m_1}+\delta_{m_1}-\delta_{m_2}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}-1$,<br>
+                $\gamma_{n_1}-\gamma_{n_2}$, $x\gamma_{n_1}+\delta_{n_1}+\delta_{n_2}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}+1$,<br>
+                $\gamma_{n_1}-\gamma_{n_2}$, $x\gamma_{n_1}+\delta_{n_1}+\delta_{n_2}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}+1$,<br>
+                $\gamma_{n_1}+\gamma_{n_2}$, $x\gamma_{n_1}+\delta_{n_1}-\delta_{n_2}$,<br>
+                $\gamma_{n_1}^2 + x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}-1$,<br>
+                $\gamma_{n_1}+\gamma_{n_2}$, $x\gamma_{n_1}+\delta_{n_1}-\delta_{n_2}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}-\gamma_{m_2}$, $y\gamma_{m_1}+\delta_{m_1}+\delta_{m_2}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}-\gamma_{m_2}$, $y\gamma_{m_1}+\delta_{m_1}+\delta_{m_2}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-node" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Generated by<br>
+                $\gamma_{n_1}+\gamma_{n_2}$, $\delta_{n_1}+\delta_{n_2}$,<br>
+                $\gamma_{m_1}-\gamma_{m_2}$, $\delta_{m_1}-\delta_{m_2}$,<br>
+                $z\gamma_{n_1}\gamma_{m_1}+x\gamma_{n_1}\delta_{m_1}$<br>
+                $\quad+y\delta_{n_1}\gamma_{m_1}+2\delta_{n_1}\delta_{m_1}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+
+              <!-- Popups aristas -->
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_{1}+\wp_{10}$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}+\gamma_{m_2}$, $\delta_{m_1}+\delta_{m_2}$,<br>
+                $y\gamma_{m_1}+2\delta_{m_1}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_{3}+\wp_{10}$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}+\gamma_{m_2}$, $\delta_{m_1}+\delta_{m_2}$,<br>
+                $y\gamma_{m_1}+2\delta_{m_1}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_{6}+\wp_{10}$<br>
+                generated by<br>
+                $\gamma_{n_1}-\gamma_{n_2}$, $\delta_{n_1}-\delta_{n_2}$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}-1$,<br>
+                $x\gamma_{n_1}+2\delta_{n_1}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_{8}+\wp_{10}$<br>
+                generated by<br>
+                $\gamma_{n_1}-\gamma_{n_2}$, $\delta_{n_1}-\delta_{n_2}$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}+1$,<br>
+                $x\gamma_{n_1}+2\delta_{n_1}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_5+\wp_9$<br>
+                generated by<br>
+                $\gamma_{n_1}+\gamma_{n_2}$, $\delta_{n_1}+\delta_{n_2}$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}+1$,<br>
+                $x\gamma_{n_1}+2\delta_{n_1}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_7+\wp_9$<br>
+                generated by<br>
+                $\gamma_{n_1}+\gamma_{n_2}$, $\delta_{n_1}+\delta_{n_2}$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}-1$,<br>
+                $x\gamma_{n_1}+2\delta_{n_1}$,<br>
+                $\gamma_{n_1}^2+x\gamma_{n_1}\delta_{n_1}+\delta_{n_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_2+\wp_9$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}-\gamma_{m_2}$, $\delta_{m_1}-\delta_{m_2}$,<br>
+                $y\gamma_{m_1}+2\delta_{m_1}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_4+\wp_9$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}-\gamma_{m_2}$, $\delta_{m_1}-\delta_{m_2}$,<br>
+                $y\gamma_{m_1}+2\delta_{m_1}$,<br>
+                $\gamma_{m_1}^2+y\gamma_{m_1}\delta_{m_1}+\delta_{m_1}^2-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_1+\wp_5$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}+1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_1+\wp_7$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_3+\wp_5$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}+1$.
+              </div>
+              <!--Repeated because of the white space-->
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_3+\wp_5$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}+1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_3+\wp_7$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_2+\wp_6$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_4+\wp_6$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}+1$, $\delta_{m_2}-1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_2+\wp_8$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}+1$.
+              </div>
+              <!--Repeated because of the white space-->
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_2+\wp_8$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}+1$, $\delta_{n_2}-1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}+1$.
+              </div>
+              <div class="popup-edge" style="position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:white; border-radius:5px; pointer-events:none; opacity:0;">
+                Intersection $\wp_4+\wp_8$<br>
+                generated by<br>
+                $\gamma_{n_1}$, $\gamma_{n_2}$, $\delta_{n_1}-1$, $\delta_{n_2}+1$,<br>
+                $\gamma_{m_1}$, $\gamma_{m_2}$, $\delta_{m_1}-1$, $\delta_{m_2}+1$.
+              </div>
+            </div>
+          </div>
+
+          <script>
+          const svg = document.getElementById('graph-svg');
+          const container = svg.parentElement;
+          const nodes = Array.from(svg.querySelectorAll('.node-circle'));
+          const edges = Array.from(svg.querySelectorAll('.edge, .surr-edge'));
+          const labels = Array.from(svg.querySelectorAll('.node-label'));
+          const nodePopups = Array.from(container.querySelectorAll('.popup-node'));
+          const edgePopups = Array.from(container.querySelectorAll('.popup-edge'));
+          
+          // Movimiento
+          const basePos = nodes.map(n => ({cx:parseFloat(n.getAttribute('cx')), cy:parseFloat(n.getAttribute('cy'))}));
+          const motion = nodes.map(()=>({angleX:Math.random()*2*Math.PI, angleY:Math.random()*2*Math.PI, speedX:0.01+Math.random()*0.005, speedY:0.01+Math.random()*0.005, amp:5+Math.random()*2}));
+          const edgeNodes = edges.map(e=>[parseInt(e.dataset.from), parseInt(e.dataset.to)]);
+          let animatingNodes = new Set(nodes.map((_,i)=>i));
+          
+          function updateEdges(){
+            edges.forEach((e,i)=>{
+              const [f,t]=edgeNodes[i];
+              e.setAttribute('x1', nodes[f].getAttribute('cx'));
+              e.setAttribute('y1', nodes[f].getAttribute('cy'));
+              e.setAttribute('x2', nodes[t].getAttribute('cx'));
+              e.setAttribute('y2', nodes[t].getAttribute('cy'));
+            });
+          }
+          
+          function updateLabels(){
+            labels.forEach((lbl,i)=>{
+              lbl.setAttribute('x', nodes[i].getAttribute('cx'));
+              lbl.setAttribute('y', nodes[i].getAttribute('cy'));
+            });
+          }
+          
+          function animate(){
+            animatingNodes.forEach(i=>{
+              const n = nodes[i];
+              const m = motion[i];const b = basePos[i];
+              m.angleX += m.speedX; m.angleY += m.speedY;
+              n.setAttribute('cx', b.cx + Math.sin(m.angleX)*m.amp);
+              n.setAttribute('cy', b.cy + Math.sin(m.angleY)*m.amp);
+            });
+            updateEdges();
+            updateLabels();
+            requestAnimationFrame(animate);
+          }
+          animate();
+
+          // Posicionar popup dentro del contenedor
+          function positionPopup(popup, event){
+            const rect = container.getBoundingClientRect();
+            let left = event.clientX - rect.left + 10;
+            let top = event.clientY - rect.top + 10;
+            if(left + popup.offsetWidth > rect.width) left = rect.width - popup.offsetWidth - 5;
+            if(left < 0) left = 5;
+            if(top + popup.offsetHeight > rect.height) top = rect.height - popup.offsetHeight - 5;
+            if(top < 0) top = 5;
+            popup.style.left = left + 'px';
+            popup.style.top = top + 'px';
+          }
+
+          // Hover nodos
+          nodes.forEach((n,i)=>{
+            n.addEventListener('mouseenter', e=>{
+              animatingNodes.delete(i);
+              nodePopups[i].style.opacity='1';
+            });
+            n.addEventListener('mousemove', e=>{
+              positionPopup(nodePopups[i], e);
+            });
+            n.addEventListener('mouseleave', e=>{
+              animatingNodes.add(i);
+              nodePopups[i].style.opacity='0';
+            });
+          });
+
+          // Hover aristas
+          edges.forEach((e,i)=>{
+            const [f,t]=edgeNodes[i];
+            e.addEventListener('mouseenter', eEv=>{
+              // Prioridad nodos: si algún nodo ya está encima, no detener arista
+              const nodesHover = Array.from(nodes).some(n=>n.matches(':hover'));
+              if(!nodesHover){
+                animatingNodes.delete(f); animatingNodes.delete(t);
+                edgePopups[i].style.opacity='1';
+              }
+            });
+            e.addEventListener('mousemove', eEv=>{
+              positionPopup(edgePopups[i], eEv);
+            });
+            e.addEventListener('mouseleave', eEv=>{
+              animatingNodes.add(f); animatingNodes.add(t);
+              edgePopups[i].style.opacity='0';
+            });
+            });
+          </script>
+
+          <span>
+            It is important to note that the variable $z$ is only appears in the generators of the nodes $\wp_9$ and $\wp_{10}$. In fact, $z$ occurs linearly in a single generator multiplied by $\gamma_{n_1}\gamma_{m_1}$. Finally, observe that $\gamma_{n_1}\gamma_{m_2}\in \wp_1\cap\cdots\cap\wp_8$, so $z$ will be uniquely determined if and only if we work in any of the constructible set $\mathsf{V}(\wp_j)\setminus\mathsf{V}(\prod_{i\neq j}\wp_i)$ for $j=9,10$. Using all this information, we are now ready to reach conclusions for the character varieties.
+          </span>
+        </div>
+      </details>
+      <!--Subsection 4.2-->
+      <details class="ToCDetails">
+        <summary class="ToCDetails">
+          <div style="text-align: center; margin-top:2.5px; margin-bottom: 2.5px">
+            4.2. The dimension of generically irreps.
+          </div>
+        </summary>
+        <div style="text-align: justify; text-indent: 5px">
+          <span>
+            As we said before, we have the ring homomorphism $R\to TH[F_2]=\mathbb{Z}[x,y,z]$ that sends \[x, y, z, \gamma_{n_i}, \delta_{n_i}, \gamma_{m_i}, \delta_{m_i} \longmapsto x, y, z, c_{n_i}(x), d_{n_i}(x), c_{m_i}(y), d_{m_i}(y).\] Observe that this ring factors through the quotient $R/J$, where $J$ is the ideal generated by the 'determinant' relations $\gamma_{n_i}^2+x\gamma_{n_i}\delta_{n_i}+\delta_{n_i}^2-1$, $\gamma_{m_i}^2+y\gamma_{m_i}\delta_{m_i}+\delta_{m_i}^2-1$ for $i=1,2$.
+          </span>
+
+          <p>
+            Let $I^{\texttt{e}}$ be the extension of $I$ by the morphism $R/J \to \mathbb{Z}[x,y,z]$. Observe that $I^{\texttt{e}}$ is the variety of generically irreducible representations, up to a bunch of representations that may be reducible. We obtain a canonical morphism between algebraic varieties \[\mathsf{Spec}\ \mathbb{Z}[x,y,z]/I^{\texttt{e}} \to \mathsf{Spec}\ R/I,\] and we obtain from the decomposition of the target into irreducibles $\mathsf{Spec}\ R/I = \mathsf{V}(\wp_1)\cup\cdots\cup\mathsf{V}(\wp_{10})$ a decomposition of the domain into closed subschemes $M_i := \mathsf{V}(\wp_i^{\texttt{e}})$. Likewise, a decomposition of $M^{\texttt{gen.irr}}(\pi,\mathrm{SL}_2)$ (which is an open subscheme of $\mathsf{Spec}\ \mathbb{Z}[x,y,z]/I^{\texttt{e}}$) into closed subschemes $M^\circ_i := M_i \cap M^{\texttt{gen.irr}}(\pi,\mathrm{SL}_2)$ follows.
+          </p>
+
+          <p>
+            Going back to matrices, let $\rho:\pi\to\mathrm{SL}_2(K)$ be any representation and write as usual $A:=\rho\ a$, $B:=\rho\ b$. As we did in the paper, there is a potential confusion while comparing two sets of conditions: for $n\in\mathbb{Z}$ and $s\in\{\pm1\}$, the equality $A^n=s\cdot I$ <u>is not</u> equivalent to $c_n(\mathrm{tr}\ A)=0$ and $d_n(\mathrm{tr}\ A)=s$.
+          </p>
+
+          <p>
+            First, if $c_n(\mathrm{tr}\ A)=0$, then $d_n(\mathrm{tr}\ A)^2=1$; and $A^n = d_n(\mathrm{tr}\ A)\cdot I$. But, if $A^n = s\cdot I$, then $c_n(\mathrm{tr}\ A)=0$ if and only if $\mathrm{tr}\ A\neq 2$ or $n=0$.
+          </p>
+
+          <p>
+            As a result, the two equivalent conditions are, for $s\in\{\pm\}$ and $n\in\mathbb{Z}$: $c_n(\mathrm{tr}\ A)=0$ and $d_n(\mathrm{tr}\ A)=s$ if and only if ($n=0$ and $s=1$) or ($A\neq\pm I$ and $A^n=s\cdot I$). So, we say for $n\in\mathbb{Z}$ and $s\in\{\pm1\}$ that $A^n =_{\texttt{nt}} s\cdot I$ (<i>nontrivial identity</i>) if either $n=0$ or $A\neq\pm I$.
+          </p>
+
+          <p>
+            With this notation we can study the points of the closed subschemes $M_i$ using matrices $A$, $B$. We have the following description (further details in Section 3.1 of the paper):
+          </p>
+
+          <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 20px 0;">
+            <table>
+              <tbody>
+                <tr style="background-color: #E7E7E7;">
+                  <td>
+                    $\begin{aligned}\rho\in M_1: &A^{n_1}=_{\texttt{nt}} -I, A^{n_2}=_{\texttt{nt}} -I,\\ &B^{m_1+m_2}=_{\texttt{nt}}I.\end{aligned}$
+                  </td>
+                  <td>
+                    $\begin{aligned}\rho\in M_2: &A^{n_1}=_{\texttt{nt}} -I, A^{n_2}=_{\texttt{nt}} I,\\ &B^{m_1+m_2}=_{\texttt{nt}}-I.\end{aligned}$
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    $\begin{aligned}\rho\in M_3: &A^{n_1}=_{\texttt{nt}} I, A^{n_2}=_{\texttt{nt}} I,\\ &B^{m_1+m_2}=_{\texttt{nt}}I.\end{aligned}$
+                  </td>
+                  <td>
+                    $\begin{aligned}\rho\in M_4: &A^{n_1}=_{\texttt{nt}} I, A^{n_2}=_{\texttt{nt}} -I,\\ &B^{m_1+m_2}=_{\texttt{nt}}-I.\end{aligned}$
+                  </td>
+                </tr>
+                <tr style="background-color: #E7E7E7;">
+                  <td>
+                    $\begin{aligned}\rho\in M_5: &A^{n_1+n_2}=_{\texttt{nt}} I,\\ &B^{m_1}=_{\texttt{nt}} -I, B^{m_2}=_{\texttt{nt}}-I.\end{aligned}$
+                  </td>
+                  <td>
+                    $\begin{aligned}\rho\in M_6: &A^{n_1+n_2}=_{\texttt{nt}} -I,\\ &B^{m_1}=_{\texttt{nt}} -I, B^{m_2}=_{\texttt{nt}}I.\end{aligned}$
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    $\begin{aligned}\rho\in M_7: &A^{n_1+n_2}=_{\texttt{nt}} I,\\ &B^{m_1}=_{\texttt{nt}} I, B^{m_2}=_{\texttt{nt}}I.\end{aligned}$
+                  </td>
+                  <td>
+                    $\begin{aligned}\rho\in M_8: &A^{n_1+n_2}=_{\texttt{nt}}-I,\\ &B^{m_1}=_{\texttt{nt}} I, B^{m_2}=_{\texttt{nt}}-I.\end{aligned}$
+                  </td>
+                </tr>
+                <tr style="background-color: #E7E7E7;">
+                  <td>
+                    $\begin{aligned}\rho\in M_9: &A^{n_1-n_2}=_{\texttt{nt}}-I,\\ &B^{m_1-m_2}=_{\texttt{nt}}I,\\ &\mathrm{tr}\ A^{n_1}B^{m_1}=0.\end{aligned}$
+                  </td>
+                  <td>
+                    $\begin{aligned}\rho\in M_{10}: &A^{n_1-n_2}=_{\texttt{nt}}I,\\ &B^{m_1-m_2}=_{\texttt{nt}}-I,\\ &\mathrm{tr}\ A^{n_1}B^{m_1}=0.\end{aligned}$
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Working out these equations and studying the solutions, it is possible to describe the dimension of each closed $M_i$ imposing diophantine conditions on the exponents $n_i$ and $m_i$. Consider the following condition: given two non-zero integers $N_1,N_2$ and signs $s_1,s_2\in\{\pm1\}$; we say $\mathsf{C}(N_1,N_2,s_1,s_2)$ holds if the system \[\begin{matrix}&c_{N_1}(t)=0, &d_{N_1}(t)=s_1,\\ &c_{N_2}(t)=0, &d_{N_2}(t)=s_2;\end{matrix}\] has a solution in $\mathbb{C}$ (or any other char. 0 algebraically closed field). Writing $g:=\mathrm{gcd}(N_1,N_2)$, it is not hard to see that $\mathsf{C}(N_1,N_2,s_1,s_2)$ is equivalent to \[(g>1\wedge s_1=(-1)^{N_1/g}\wedge s_2=(-1)^{N_2/g})\quad\vee\quad(g>2\wedge s_1=1\wedge s_2=1).\] Finally, if we denote the $2$-adic valuation by $\nu_2$, the condition $\mathsf{C}$ can be restated for any particular choice of signs as follows:
+          </p>
+
+          <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 20px 0;">
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    $\mathsf{C}(N_1,N_2,+1,+1)$:
+                  </td>
+                  <td>
+                    $g>2$.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    $\mathsf{C}(N_1,N_2,-1,+1)$:
+                  </td>
+                  <td>
+                    $g>1 \wedge \nu_2(N_1)<\nu_2(N_2)$.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    $\mathsf{C}(N_1,N_2,+1,-1)$:
+                  </td>
+                  <td>
+                    $g>1 \wedge \nu_2(N_1)>\nu_2(N_2)$.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    $\mathsf{C}(N_1,N_2,-1,-1)$:
+                  </td>
+                  <td>
+                    $g>1 \wedge \nu_2(N_1)=\nu_2(N_2)$.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Observe that the conditions on the $2$-adic valuations may imply the condition on the $\mathrm{gcd}$.
+          </p>
+
+          <p>
+            With this notation we can write down the formula for the dimension of the closed subschemes $M_i$. Below the conditions are hierarchized from top to bottom, that is, if any condition is not verified then the one inmediately below should be prioritized.
+          </p>
+
+          <div class="dimContainer">
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_1)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(n_1,n_2,-1,-1) \vee m_1+m_2\in\{\pm1,\pm2\},\\ 2 &\qquad\mathsf{C}(n_1,n_2,-1,-1) \wedge m_1+m_2=0,\\ 1 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_2)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(n_1,n_2,-1,+1) \vee m_1+m_2\in\{0,\pm1\},\\ 1 &\qquad\mathsf{C}(n_1,n_2,-1,+1) \wedge m_1+m_2\not\in\{0,\pm1\}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_3)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(n_1,n_2,+1,+1) \vee m_1+m_2\in\{\pm1,\pm2\},\\ 2 &\qquad\mathsf{C}(n_1,n_2,+1,+1) \wedge m_1+m_2=0,\\ 1 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_4)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(n_1,n_2,+1,-1) \vee m_1+m_2\in\{0,\pm1\},\\ 1 &\qquad\mathsf{C}(n_1,n_2,+1,-1) \wedge m_1+m_2\not\in\{0,\pm1\}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_5)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(m_1,m_2,-1,-1) \vee n_1+n_2\in\{\pm1,\pm2\},\\ 2 &\qquad\mathsf{C}(m_1,m_2,-1,-1) \wedge n_1+n_2=0,\\ 1 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_6)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(m_1,m_2,-1,+1) \vee n_1+n_2\in\{0,\pm1\},\\ 1 &\qquad\mathsf{C}(m_1,m_2,-1,+1) \wedge n_1+n_2\not\in\{0,\pm1\}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_7)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(m_1,m_2,+1,+1) \vee n_1+n_2\in\{\pm1,\pm2\},\\ 2 &\qquad\mathsf{C}(m_1,m_2,+1,+1) \wedge n_1+n_2=0,\\ 1 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_8)_{\mathbb{Q}} = \left\{\begin{aligned}-\infty &\qquad\neg\mathsf{C}(m_1,m_2,+1,-1) \vee n_1+n_2\in\{0,\pm1\},\\ 1 &\qquad\mathsf{C}(m_1,m_2,+1,-1) \wedge n_1+n_2\not\in\{0,\pm1\}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_9)_\mathbb{Q} = \left\{\begin{aligned}-\infty &\qquad n_1-n_2\in\{0,\pm1\}\vee m_1-m_2\in\{\pm1,\pm2\}\\ &\qquad\qquad\vee\\ &\qquad(n_1-n_2\vert n_1 \wedge \neg\mathsf{C}(m_1+m_2,m_1-m_2,-1,+1))\\ &\qquad\qquad\vee\\ &\qquad(m_1-m_2\vert 2m_1 \wedge \neg\mathsf{C}(n_1+n_2,n_1-n_2,+1,-1)),\\ 1 &\qquad m_1-m_2=0\\ &\qquad\qquad\vee\\ &\qquad\big((\mathsf{C}(n_1,n_2,-1,+1)\vee \mathsf{C}(n_1,n_2,+1,-1))\\ &\qquad\qquad\qquad\wedge\mathsf{C}(m_1+m_2,m_1-m_2,-1,+1)\big)\\ &\qquad\qquad\vee\\ &\qquad\big((\mathsf{C}(m_1,m_2,+1,+1)\vee\mathsf{C}(m_1,m_2,-1,-1))\\ &\qquad\qquad\qquad\wedge \mathsf{C}(n_1+n_2,n_1-n_2,+1,-1)\big),\\ 0 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+            <div class="dimEntry">
+              \[\mathsf{dim}\ \mathsf{V}(\wp^{\texttt{e}}_{10})_\mathbb{Q} = \left\{\begin{aligned}-\infty &\qquad m_1-m_2\in\{0,\pm1\}\vee n_1-n_2\in\{\pm1,\pm2\}\\ &\qquad\qquad\vee\\ &\qquad(m_1-m_2\vert m_1 \wedge \neg\mathsf{C}(n_1+n_2,n_1-n_2,-1,+1))\\ &\qquad\qquad\vee\\ &\qquad(n_1-n_2\vert 2n_1 \wedge \neg\mathsf{C}(m_1+m_2,m_1-m_2,+1,-1)),\\ 1 &\qquad n_1-n_2=0\\ &\qquad\qquad\vee\\ &\qquad\big((\mathsf{C}(m_1,m_2,-1,+1)\vee \mathsf{C}(m_1,m_2,+1,-1))\\ &\qquad\qquad\qquad\wedge\mathsf{C}(n_1+n_2,n_1-n_2,-1,+1)\big)\\ &\qquad\qquad\vee\\ &\qquad\big((\mathsf{C}(n_1,n_2,+1,+1)\vee\mathsf{C}(n_1,n_2,-1,-1))\\ &\qquad\qquad\qquad\wedge \mathsf{C}(m_1+m_2,m_1-m_2,+1,-1)\big),\\ 0 &\qquad\text{else}.\end{aligned}\right.\]
+            </div>
+          </div>
+
+          <span>
+            An application of these formulas is to give a diopahntine condition to characterize groups $\pi=\langle a,b\vert a^{n_1}b^{m_1}a^{n_2}b^{m_2}\rangle$ such that their SL<sub>2</sub>-character variety of irreps. is zero dim'l with points only of types 9 and 10. This is useful to further reduce the search space when looking for more examples like Breuillard's one or more generally, our family $\Gamma_{\ell^k}$.
+          </span>
+        </div>
+      </details>
+    </details>
+
+    <!--<hr>
+      Further sections
+      
+      <pre><code class="language-python">H.&lt;a,b,ab&gt; := g</code></pre>
+
+      <pre><code class="language-python" data-ln-start-from="500">ts = [2,x,y,z]
+def T(w): # T : H[F₂] &rarr; TH[F₂]
+  ws = w.vector()
+  t=0
+  for i in range(4):
+    t += ts[i]*ws[i]
+  return t</code></pre>
+
+      <p>
+        <aside id="info-block">
+          <section class="file-marker">
+            <div style="text-align: justify">
+              <div class="box-title">
+                <strong>.</strong> [, ]
+              </div>
+              <div class="box-contents" style="text-align: left; padding: 10px;">
+                :
+                <ol type="a">
+                  <li>;</li>
+                  <li>;</li>
+                  <li>.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </p>-->
+
+    <hr>
+    <h4>References</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td style="vertical-align: top">
+              <div id="BH95"><small>[BH95]</small></div>
+            </td>
+            <td>
+              <small><b>Brumfiel G. W.; Hilden, H. M.</b> <i>SL<sub>2</sub>-representations of finitely presented groups.</i> <a href="http://www.ams.org/mathscinet-getitem?mr=1339764" target="_blank" rel="noreferrer noopener">MR1339764</a>. <a href="https://zbmath.org/0838.20006" target="_blank" rel="noreferrer noopener">Zbl 0838.20006</a>. <a href="https://doi.org/10.1090/conm/187" target="_blank" rel="noreferrer noopener">doi.org/10.1090/conm/187</a>.</small>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top">
+              <div id="CG24"><small>[CG24]</small></div>
+            </td>
+            <td>
+              <small><b>Church, B.; García-Cortés, F.</b> <i>SL<sub>2</sub>-character varieties of 2-generated groups and failure of weak integrality.</i> <a href="https://doi.org/10.48550/arXiv.2410.23233" target="_blank" rel="noreferrer noopener">arXiv:2410.23233</a>.</small>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top">
+              <div id="dJE24"><small>[dJE24]</small></div>
+            </td>
+            <td>
+              <small><b>de Jong, J.; Esnault. H.</b> <i>Integrality of the Betti moduli space.</i> <a href="http://www.ams.org/mathscinet-getitem?mr=4684597" target="_blank" rel="noreferrer noopener">MR4684597</a>. <a href="https://zbmath.org/1540.14027" target="_blank" rel="noreferrer noopener">Zbl 1540.14027</a>. <a href="https://doi.org/10.1090/tran/8928" target="_blank" rel="noreferrer noopener">doi.org/10.1090/tran/8928</a>.</small>
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top">
+              <div id="Gol09"><small>[Gol09]</small></div>
+            </td>
+            <td>
+              <small><b>Goldman, W. M.</b> <i>Trace coordinates on Fricke spaces of some simple hyperbolic surfaces.</i> <a href="http://www.ams.org/mathscinet-getitem?mr=2497777" target="_blank" rel="noreferrer noopener">MR2497777</a>. <a href="https://zbmath.org/1175.30043" target="_blank" rel="noreferrer noopener">Zbl 1175.30043</a>. <a href="https://arxiv.org/abs/0901.1404" target="_blank" rel="noreferrer noopener">arXiv:0901.1404</a>.</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </body>
+</html>
