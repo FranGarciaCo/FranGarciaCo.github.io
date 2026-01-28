@@ -28,6 +28,103 @@ body {
   font-weight: bold;
 }
 
+#session {
+	/*padding-bottom: 2rem;*/
+	/*padding: 2em;*/
+	border: 1px solid #ccc;
+	max-width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	/*background: #f4f6f9;*/
+}
+
+.sessionDetails {
+	.is-open {
+		display: none;
+	}
+	.is-closed {
+		display: block;
+	}
+}
+
+.sessionDetails[open] {
+	.is-open {
+		display: block;
+	}
+	.is-closed {
+		display: none;
+	}
+}
+
+.sessionDetails {
+	background: white;
+	position: relative;
+	/*border-bottom: 1px solid #ccc;*/
+}
+
+.sessionDetails > summary {
+	&::marker {
+		content: '';
+	}
+	
+	position: absolute;
+	width: min-content;
+	white-space: nowrap;
+	color: black;
+	border: 1px solid black;
+	background: white;
+	cursor: pointer;
+	border-radius: 2px;
+	transition: background 0.25s, color 0.25s;
+	z-index: 2;
+	
+	&:hover {
+		outline: 1px solid;
+	}
+	
+	&:active {
+		color: white;
+		background: black;
+	}
+	
+	padding: 0.5px 1.5px;
+	bottom: 0;
+	left: 50%;
+	transform: translate3d(-50%,50%,0)
+}
+
+.details-content-wrapper {
+	padding: 0.5rem;
+	
+	&::before {
+		content: '';
+		height: 60px;
+		width: 100%;
+		background-image: linear-gradient(to bottom, rgb(255 255 255 / 0), rgb(255 255 255 / 1));
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		pointer-events: none;
+		transition: opacity 0.5s ease;
+	}
+	
+	[open] &::before {
+		opacity: 0;
+	}
+}
+
+.sessionDetails::details-content {
+	content-visibility: visible; /* Make it always visible */
+	
+	transition: height 0.5s ease;
+	height: 60px;
+	overflow: clip;
+}
+
+[open]::details-content {
+	height: calc-size(auto, size + 0.5rem); /* calc-size because we need to add a length */
+}
+
 .stdDetails > summary {
   display: block;
   cursor: pointer;
