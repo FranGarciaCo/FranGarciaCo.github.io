@@ -63,10 +63,8 @@ body {
 }
 
 .sessionDetails > summary {
-  list-style-type: none;
-
 	&::marker {
-		content: '';
+		content: none;
 	}
 	
 	position: absolute;
@@ -75,6 +73,7 @@ body {
 	color: black;
 	border: 1px solid black;
 	background: white;
+  list-style-type: none;
 	cursor: pointer;
 	border-radius: 2px;
 	transition: background 0.25s, color 0.25s;
