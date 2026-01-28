@@ -128,8 +128,9 @@ body {
 }
 
 [open]::details-content {
-  height: -webkit-calc-size(auto, size + 0.5rem);
-	height: calc-size(auto, size + 0.5rem); /* calc-size because we need to add a length */
+  /*height: -webkit-calc-size(auto, size + 0.5rem);*/
+	/*height: calc-size(auto, size + 0.5rem); /* calc-size because we need to add a length */
+  height: max-content;
 }
 
 .stdDetails > summary {
