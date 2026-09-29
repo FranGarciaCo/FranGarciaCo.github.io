@@ -1,6 +1,7 @@
 body {
       margin-right: 30px;
       margin-left: 30px;
+      background-color: #fff8e7;
 }
 
 @media screen and (max-width: 600px) {
@@ -57,7 +58,7 @@ body {
 }
 
 .sessionDetails {
-	background: white;
+	background: #fff8e7;
 	position: relative;
 	/*border-bottom: 1px solid #ccc;*/
 }
@@ -72,7 +73,7 @@ body {
 	white-space: nowrap;
 	color: black;
 	border: 1px solid black;
-	background: white;
+	background: #fff8e7;
   list-style-type: none;
 	cursor: pointer;
 	border-radius: 2px;
@@ -85,7 +86,7 @@ body {
 	}
 	
 	&:active {
-		color: white;
+		color: #fff8e7;
 		background: black;
 	}
 	
@@ -104,7 +105,7 @@ body {
 		content: '';
 		height: 60px;
 		width: 100%;
-		background-image: linear-gradient(to bottom, rgb(255 255 255 / 0), rgb(255 255 255 / 1));
+		background-image: linear-gradient(to bottom, rgb(255 255 255 / 0), rgb(255, 248, 231));
 		position: absolute;
 		left: 0;
 		bottom: 0;
@@ -164,7 +165,7 @@ ul li, ol li {
   width: 12px;
   border: 1px solid black;
   clear: both;
-  background-color: white;
+  background-color: #fff8e7;
 }
 
 a[target="_blank"]::after {
@@ -250,7 +251,7 @@ a[target="_blank"]::after {
 }
 
 .box-title {
-    background: white none repeat scroll 0 0;
+    background: #fff8e7 none repeat scroll 0 0;
     display: inline-block;
     padding: 0 2px;
     margin-left: 1em;
